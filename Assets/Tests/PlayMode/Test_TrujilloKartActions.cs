@@ -29,7 +29,7 @@ public class Test_TrujilloKartActions
             stop = true;
         }
 
-        Assert.True(trujilloKart.transform.position.x >1);
+        Assert.True(trujilloKart.transform.position.x >1,"Trujillo Kar does not move towards player");
 
     }
 }

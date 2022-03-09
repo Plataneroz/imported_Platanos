@@ -66,7 +66,7 @@ namespace Platformer.Mechanics
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<BoxCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            animator = GetComponent<Animator>();
+            //animator = GetComponent<Animator>();
             capsuleCollider2D = GetComponent<CapsuleCollider2D>();
             capsuleCollider2D.enabled = false;
             grab = GetComponent<Grab>();
@@ -193,8 +193,8 @@ namespace Platformer.Mechanics
             else if (move.x < -0.01f)
                 spriteRenderer.flipX = true;
 
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+           // animator.SetBool("grounded", IsGrounded);
+          //  animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
             targetVelocity = move * maxSpeed;
         }
 
