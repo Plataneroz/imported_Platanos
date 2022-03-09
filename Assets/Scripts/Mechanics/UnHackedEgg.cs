@@ -9,10 +9,10 @@ namespace Platformer.Mechanics
     {
         public SpriteRenderer spriteRenderer;
         float Timer= 4 ;
-        bool harmFull = true;
+         public  bool harmFull = true;
         Rigidbody2D rigidBod;
         private IEnumerator coroutine;
-        int coroutineCounter;
+        public int coroutineCounter;
 
 
         // Start is called before the first frame update
