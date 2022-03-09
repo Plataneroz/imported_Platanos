@@ -56,14 +56,14 @@ namespace Platformer.Mechanics
         }
         // Update is called once per frame
 
-
+        // method some harmful others not 
 
        public void ChangeColor(int timer)
         {
             if (timer >= 4)
             {
                 if (spriteRenderer.color != Color.white)
-                {
+                {   // some red other not 
                     harmFull = false;
                     spriteRenderer.color = Color.white;
                     Timer = 3;
