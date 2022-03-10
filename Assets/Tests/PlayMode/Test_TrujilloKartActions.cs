@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine;
 using Platformer.Gameplay;
-using Platformer.Model;
+
 
 public class Test_TrujilloKartActions
 {
     
     [UnityTest]
-    public IEnumerator Test_TrujilloKartFollowingPlayer()
+    public IEnumerator Test_TrujilloKartAttack()
     {
         var stop = false;
-
+     
         GameObject TrujilloKartObj = new GameObject();
         GameObject player = new GameObject();
         player.transform.position = new Vector3(2,3,0);
@@ -30,6 +30,6 @@ public class Test_TrujilloKartActions
         }
 
         Assert.True(trujilloKart.transform.position.x >1,"Trujillo Kar does not move towards player");
-
+        
     }
 }

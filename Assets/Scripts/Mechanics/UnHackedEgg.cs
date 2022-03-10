@@ -47,16 +47,11 @@ namespace Platformer.Mechanics
                  eggNBossColliding.enemy = collision.gameObject.GetComponent<EnemyController>();
                     Destroy(gameObject, .5f);
                 }
-
-
-            }
-            
-
-            
+            }    
         }
-        // Update is called once per frame
+     
 
-        // method some harmful others not 
+        // method() some eggs harmful others not 
 
        public void ChangeColor(int timer)
         {
@@ -95,19 +90,3 @@ namespace Platformer.Mechanics
 
     }
 }
-
-/* Timer -= Time.deltaTime;
-            if (Timer <= 0 )
-            {
-                if (spriteRenderer.color != Color.white)
-                {
-                    harmFull = false;
-                    spriteRenderer.color = Color.white;
-                    Timer = 3;
-                    // call cracking animation
-                    harmFull = false;
-                }
-                else {
-                    // hatch
-                }
-            }*/

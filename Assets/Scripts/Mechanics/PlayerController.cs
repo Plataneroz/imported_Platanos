@@ -56,12 +56,11 @@ namespace Platformer.Mechanics
         public Bounds Bounds => collider2d.bounds;
         Grab grab;
 
-        //player input
-      //  private StarterAssetsInputs _input;
+
 
         void Awake()
         {
-            //_input = GetComponent<StarterAssetsInputs>();
+  
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<BoxCollider2D>();
@@ -77,7 +76,7 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
-                // move.x = Input.GetAxis("Horizontal");
+
                 if (jumpState == JumpState.Grounded && jump)
                     jumpState = JumpState.PrepareToJump;
                 else if (jumpancelled)
@@ -86,10 +85,7 @@ namespace Platformer.Mechanics
                     Schedule<PlayerStopJump>().player = this;
                 }
             }
-            else
-            {
-                //move.x = 0;
-            }
+
             UpdateJumpState();
             base.Update();
         }
