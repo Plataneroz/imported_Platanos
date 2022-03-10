@@ -13,14 +13,13 @@ namespace Platformer.Mechanics
         Rigidbody2D rigidBod;
         private IEnumerator coroutine;
         public int coroutineCounter;
-
-
+        public bool triggerAction= true;
+        float random; 
         // Start is called before the first frame update
         void Start()
         {
-            coroutine = WaitForActions(1);
+            coroutine = WaitForActions(Random.Range(4, 10.0f));
             StartCoroutine(coroutine);
-
             rigidBod = GetComponent<Rigidbody2D>();
             rigidBod.velocity = transform.right * 5;
             transform.eulerAngles = new Vector3(0, 0, 39);
@@ -51,40 +50,47 @@ namespace Platformer.Mechanics
         }
      
 
-        // method() some eggs harmful others not 
-
-       public void ChangeColor(int timer)
-        {
-            if (timer >= 4)
-            {
-                if (spriteRenderer.color != Color.white)
-                {   // some red other not 
-                    harmFull = false;
-                    spriteRenderer.color = Color.white;
-                    Timer = 3;
-                    // call cracking animation
-                    harmFull = false;
-                }
-               
-            }
-        }
-
-
-        void HatchEgg() { }
 
         public IEnumerator WaitForActions(float waitTime)
-        {  
+        {
             while (true)
             {
-                    yield return new WaitForSeconds(waitTime);
-                    coroutineCounter++;
-                    ChangeColor(coroutineCounter);
-                    if(coroutineCounter == 4) { harmFull = false; }
-                    else if (coroutineCounter == 7) { HatchEgg(); StopCoroutine(coroutine); }
-
+                yield return new WaitForSeconds(waitTime);
+                ChangeColor();
+                NotHarmfull();
+                StopAllCoroutines();
+                /* yield return new WaitForSeconds();
+                 HatchEgg();
+                 StopAllCoroutines();*/
             }
-           
         }
+
+        
+        void HatchEgg() {
+            // hurt enemy when hatch
+        }
+
+
+        public void NotHarmfull()
+        {
+            harmFull = false;
+        }
+
+
+        public void ChangeColor()
+        {
+                if (spriteRenderer.color != Color.white)
+                {   
+                    spriteRenderer.color = Color.white;
+                    
+                }
+        }
+        
+
+
+        
+
+
 
 
 

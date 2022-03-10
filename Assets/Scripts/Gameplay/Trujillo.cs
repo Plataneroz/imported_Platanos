@@ -37,8 +37,7 @@ namespace Platformer.Gameplay
             if (distanceFromPlayer <= 8) { speed = 12; }
             else if (distanceFromPlayer <= 10) { speed = 8; }
             else if (distanceFromPlayer <= 14) { speed = 6; }
-           // else if (distanceFromPlayer <= 10){ speed = 1; }
-            //Debug.Log("Player speed: " + speed );
+
             return speed;
         }
             void MoveTowardsPlayer(float speed )
@@ -52,7 +51,7 @@ namespace Platformer.Gameplay
                 else if (enemyDirection.x > 0) { xOffset = model.player.transform.position.x + 7; bossSprite.FlipSprite(); }
             }
 
-            Debug.Log("Player offset :" + xOffset);
+  
             var targetPositon = new Vector2(xOffset, model.player.transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position,
             targetPositon , speed * Time.deltaTime);
