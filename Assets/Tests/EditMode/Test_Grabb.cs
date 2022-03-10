@@ -36,7 +36,12 @@ public class Test_Grab
             grabWithComponent = grabsObj.AddComponent<Grab>();
             addRigidComponent = ColliderRigidBodBodObj.AddComponent<Rigidbody2D>();
             addPickedUpCollider = pickedUpObjCapColliderObj.AddComponent<CapsuleCollider2D>();
-        }
+
+            grabWithComponent.ColliderRigidBod = addRigidComponent;
+            grabWithComponent.currentColliderGameObj = currentColliderGameObj;
+            grabWithComponent.pickedUpObjCapCollider = addPickedUpCollider;
+            grabWithComponent.pickedUpObjTrans = pickedUpObjTrans.transform;
+    }
 
 
 
@@ -44,17 +49,35 @@ public class Test_Grab
          public void Test_FollowPlayer()
         {
             Init();
-            grabWithComponent.ColliderRigidBod = addRigidComponent;
-            grabWithComponent.currentColliderGameObj = currentColliderGameObj;
-            grabWithComponent.pickedUpObjCapCollider = addPickedUpCollider;
-            grabWithComponent.pickedUpObjTrans = pickedUpObjTrans.transform;
+
             grabWithComponent.FollowingPlayer();
-        Assert.True(grabWithComponent.pickedUpObjCapCollider.isTrigger , "pick objs collider is not a trigger");
-        Assert.True(grabWithComponent.ColliderRigidBod.isKinematic, "ColliderRigidBod.kinematic is not true");
-        Assert.AreEqual(grabWithComponent.transform.childCount,1,"Obj colliding was not made a child ");
-        Assert.AreEqual(grabWithComponent.pickedUpObjTrans.localPosition,new Vector3(.05f,.05f,0), "picked up objs local posisition is not x:.5, y:.5,z:0");
+            Assert.True(grabWithComponent.pickedUpObjCapCollider.isTrigger , "pick objs collider is not a trigger");
+            Assert.True(grabWithComponent.ColliderRigidBod.isKinematic, "ColliderRigidBod.kinematic is not true");
+            Assert.NotNull(grabWithComponent.pickedUpObjTrans.parent,"Obj colliding was not made a child ");
+            Assert.AreEqual(grabWithComponent.pickedUpObjTrans.localPosition,new Vector3(.05f,.05f,0), "picked up objs local posisition is not x:.5, y:.5,z:0");
         
         }
-
+        [Test]
+        public void Test_Drop()
+    {
+        Init();
+        grabWithComponent.DropObj();
+        Assert.False(grabWithComponent.pickedUpObjCapCollider.isTrigger, "pick objs collider is still a trigger");
+        Assert.IsNull(grabWithComponent.pickedUpObjTrans, "picked ups trans is not null ");
+        Assert.IsNull(grabWithComponent.ColliderRigidBod, "picked ups  collided was not released");
     }
+    [Test]
+    public void TestThrowing()
+    {
+        Init();
+        grabWithComponent.Throwing(2);
+        Assert.AreEqual(grabWithComponent.currentColliderGameObj.tag,"pickUpObj");
+        Assert.AreEqual(currentColliderGameObj.gameObject.layer,7, "currentCollider layer was not change to 7");
+        Assert.False(grabWithComponent.pickedUpObjCapCollider.isTrigger, "pick objs collider is still a trigger");
+        Assert.IsNull(grabWithComponent.pickedUpObjTrans, "picked ups trans is not null ");
+        Assert.IsNull(grabWithComponent.ColliderRigidBod, "picked ups  collided was not released");
+        // tes pick objs position , euler angles and velocity 
+    }
+
+}
 
