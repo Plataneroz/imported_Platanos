@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Platformer.Gameplay;
+
 using UnityEngine;
-using static Platformer.Core.Simulation;
+
 
 namespace Platformer.Mechanics
 {
@@ -17,30 +15,30 @@ namespace Platformer.Mechanics
 
        
         public Transform pickedUpObjTrans;
-        Rigidbody2D rigid;
-        CapsuleCollider2D pickedUpObjCapCollider;
-        private SpriteRenderer sprite;
-        GameObject currentColliderGameObj;
+        public Rigidbody2D ColliderRigidBod;
+        public CapsuleCollider2D pickedUpObjCapCollider;
+        //public  SpriteRenderer sprite;
+        public GameObject currentColliderGameObj;
 
         void OnTriggerEnter2D(Collider2D collision)
         {
             
-            if (collision.tag == "unhackedEgg" && rigid == null)
+            if (collision.tag == "unhackedEgg" && ColliderRigidBod == null)
             {
                 currentColliderGameObj = collision.gameObject;
                 collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
                 pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
-                rigid = collision.attachedRigidbody;
+                ColliderRigidBod = collision.attachedRigidbody;
                 pickedUpObjTrans = collision.transform;
-                followingPlayer();
+                FollowingPlayer();
 
             }
         }
 
-        void followingPlayer()
+        public void FollowingPlayer()
         {
  
-                rigid.isKinematic = true;
+                ColliderRigidBod.isKinematic = true;
                 pickedUpObjTrans.SetParent(transform.GetChild(0), false);
                 pickedUpObjTrans.localPosition = new Vector3(.05f, .05f, 0);
                 pickedUpObjCapCollider.isTrigger = true;
@@ -50,30 +48,30 @@ namespace Platformer.Mechanics
        public void DropObj()
         {
             //option to drop incase of dangerous 
-            if (rigid != null)
+            if (ColliderRigidBod != null)
             {
-                rigid.isKinematic = false;
+                ColliderRigidBod.isKinematic = false;
                 pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
-                rigid = null;
+                ColliderRigidBod = null;
             }
         }
 
         public void Throwing( int distance)
         {
-            if (rigid != null)
+            if (ColliderRigidBod != null)
             {
                 currentColliderGameObj.tag = "pickUpObj";
                 currentColliderGameObj.gameObject.layer = 7;
-                rigid.isKinematic = false;
+                ColliderRigidBod.isKinematic = false;
                 pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.position = transform.GetChild(0).position;
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
-                rigid.velocity = transform.GetChild(0).transform.right * distance;
+                ColliderRigidBod.velocity = transform.GetChild(0).transform.right * distance;
                 pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
-                rigid = null;
+                ColliderRigidBod = null;
             }
         }
 

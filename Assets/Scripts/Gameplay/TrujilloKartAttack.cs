@@ -6,7 +6,7 @@ namespace Platformer.Gameplay {
 public class TrujilloKartAttack : MonoBehaviour
 {
     public GameObject eggs;
-    public float Timer = 2;
+    public float Timer = 5;
     public float eggOffset;
     bool triggerAction = true;
     // Start is called before the first frame update

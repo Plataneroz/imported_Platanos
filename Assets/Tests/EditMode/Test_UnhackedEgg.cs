@@ -19,10 +19,7 @@ public class Test_UnhackedEgg
         unHackedEgg.spriteRenderer = unHacked.AddComponent<SpriteRenderer>();
         unHackedEgg.spriteRenderer.color = Color.red;
         unHackedEgg.ChangeColor();
-        Assert.AreEqual(unHackedEgg.spriteRenderer.color,Color.white, "Color is not changing to white after 4 secs");
-        unHackedEgg.spriteRenderer.color = Color.red;
-        unHackedEgg.ChangeColor();
-        Assert.AreEqual(unHackedEgg.spriteRenderer.color,Color.red, "color does not remain red for 4 secs");
+        Assert.AreEqual(unHackedEgg.spriteRenderer.color,Color.white, "Color is not changing to white");
         // Use the Assert class to test conditions
     }
 
