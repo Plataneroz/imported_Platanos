@@ -4,20 +4,30 @@ using NUnit.Framework;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
+//using UnityEngine.InputSystem;
+using Platformer.Mechanics;
 
 public class Test_PlayerWeaponAim
 {
-    
-    [UnityTest]
-    public IEnumerator Test_TrujilloKartThrwoingEggs()
+
+    [Test]
+    public void Test_HandleAiming()
+    {
+        //var gamepad = InputSystem.AddDevice<Gamepad>();
+        var playerWeaponAim = new GameObject();
+        var playerWeaponAimWithComponent = playerWeaponAim.AddComponent<PlayerWeaponAim>();
+        
+        //playerWeaponAimWithComponent.HandleAiming();
+    }
+
+    /*[UnityTest]
+    public IEnumerator Test_Handle()
     {
         Scene scene = SceneManager.GetActiveScene();
         GameObject[] objs = scene.GetRootGameObjects();
         var stop = false;
         var player = new GameObject();
-        var ps4Controller = InputSystem.AddDevice<DualShockGamepad>();
+       // var ps4Controller = InputSystem.AddDevice<DualShockGamepad>();
         var keyboard = InputSystem.AddDevice<Keyboard>();
         var mouse = InputSystem.AddDevice<Mouse>();
         var playerInput = player.AddComponent<PlayerInput>();
@@ -41,5 +51,5 @@ public class Test_PlayerWeaponAim
         }
      
        
-    }
+    }*/
 }

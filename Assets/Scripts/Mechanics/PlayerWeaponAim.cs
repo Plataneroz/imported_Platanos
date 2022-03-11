@@ -4,26 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 namespace Platformer.Mechanics {
     public class PlayerWeaponAim : MonoBehaviour
     {
         float angle ;
-        Vector2 lookingDirections;
         [SerializeField]
-        Transform gunAim;
-        Vector3 lookDirection;
+        Transform gunAim;  
         float lookAngle;
         public Transform gunPoint;
 
         // Update is called once per frame
-        void Update()
-        {
-            HandleAiming();
-        }
 
-        private void HandleAiming()
+        public  void HandleAiming(Vector2 lookingDirections , String device)
         {
-            if (Gamepad.current != null) {
+            Debug.Log(lookingDirections);
+            if (!device.Contains("Mouse")) {
                 gunAim.eulerAngles = new Vector3(0, 0, -Mathf.Atan2(lookingDirections.y, lookingDirections.x) * 180 / -Mathf.PI); }
             else
             {
@@ -47,8 +43,13 @@ namespace Platformer.Mechanics {
 
         public void Look(InputAction.CallbackContext context)
         {
-            lookingDirections = context.ReadValue<Vector2>();
-            
+
+            //
+
+            if (!context.canceled) {
+                HandleAiming(context.ReadValue<Vector2>(), context.control.device.ToString());
+            }
+
         }
     }
 }
