@@ -36,7 +36,7 @@ public class Test_UnhackedEgg
             yield return null;
         }
 
-        Assert.IsFalse(!unHackedEgg.harmFull, "unhacked egg is still harmful after 4 seconds");
+        Assert.IsFalse(!unHackedEgg.harmFull, "unhacked egg is still harmful ");
 
         unHackedEgg.StartCoroutine(unHackedEgg.WaitForActions(0));
 
@@ -45,7 +45,7 @@ public class Test_UnhackedEgg
             yield return null;
         }
 
-        Assert.True(unHackedEgg.harmFull, "unhacked egg is not harmful b4 4 seconds");
+        Assert.True(unHackedEgg.harmFull, "unhacked egg is not harmful");
     }
 
 

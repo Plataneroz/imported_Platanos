@@ -76,7 +76,7 @@ public class Test_Grab
         Assert.False(grabWithComponent.pickedUpObjCapCollider.isTrigger, "pick objs collider is still a trigger");
         Assert.IsNull(grabWithComponent.pickedUpObjTrans, "picked ups trans is not null ");
         Assert.IsNull(grabWithComponent.ColliderRigidBod, "picked ups  collided was not released");
-        // tes pick objs position , euler angles and velocity 
+       
     }
 
 }

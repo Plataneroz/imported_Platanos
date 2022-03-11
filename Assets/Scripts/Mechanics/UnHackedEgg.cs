@@ -18,7 +18,7 @@ namespace Platformer.Mechanics
         // Start is called before the first frame update
         void Start()
         {
-            coroutine = WaitForActions(Random.Range(4, 10.0f));
+            coroutine = WaitForActions(Random.Range(4, 6.0f));
             StartCoroutine(coroutine);
             rigidBod = GetComponent<Rigidbody2D>();
             rigidBod.velocity = transform.right * 5;
