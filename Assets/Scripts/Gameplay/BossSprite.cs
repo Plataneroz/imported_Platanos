@@ -8,7 +8,7 @@ namespace Platformer.Gameplay
     {
         
         [SerializeField]
-         SpriteRenderer spriteRenderer;
+         public SpriteRenderer spriteRenderer;
         [SerializeField]
         Sprite[] spriteArray;
         [SerializeField]
