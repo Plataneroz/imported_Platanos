@@ -13,7 +13,7 @@ public class Test_TrujilloKartActions
     [UnityTest]
     public IEnumerator Test_TrujilloKartAttack()
     {
-        var stop = false;
+        
      
         GameObject TrujilloKartObj = new GameObject();
         GameObject player = new GameObject();
@@ -21,14 +21,8 @@ public class Test_TrujilloKartActions
         var trujilloKart = TrujilloKartObj.AddComponent<TrujilloKartActions>() ;
         trujilloKart.playerTrans = player.transform;
 
-
-        while ( !stop)
-        {
-            trujilloKart.MoveTowardsPlayer(1, 1);
-            yield return new WaitForSeconds(2); 
-            stop = true;
-        }
-
+        trujilloKart.MoveTowardsPlayer(1, 1);
+        yield return new WaitForSeconds(2); 
         Assert.True(trujilloKart.transform.position.x >1,"Trujillo Kar does not move towards player");
         
     }

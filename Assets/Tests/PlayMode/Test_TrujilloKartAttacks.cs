@@ -15,18 +15,14 @@ public class Test_TrujilloKartAttacks
     public IEnumerator Test_TrujilloKartThrwoingEggs()
     {
 
-        var stop = false;
+        
         GameObject eggs = new GameObject();
         eggs.name = "eggs";
         GameObject TrujilloKartObj = new GameObject();
         var trujilloKartAttack = TrujilloKartObj.AddComponent<TrujilloKartAttack>() ;
         trujilloKartAttack.eggs = eggs;
-     
-        while ( !stop)
-        {
-            yield return null;
-            stop = true;
-        }
+
+        yield return null;
         trujilloKartAttack.CreateEggs(2);
 
         Scene scene = SceneManager.GetActiveScene();
