@@ -12,21 +12,25 @@ namespace Platformer.Gameplay
         public Transform playerTransform;
         float Timer =2;
         float bossSpeed;
-        BossSprite bossSprite;
+        public BossSprite bossSprite;
         float xOffset = 0.25777f;
+        public bool ranOnce = false;
         // Start is called before the first frame update
         void Start()
         {
-            transform.position = new Vector3(playerTransform.position.x,
-                  transform.position.y + 4);
-            bossSprite = gameObject.GetComponent<BossSprite>();
-            Invoke("GetReadyToAttack", 2);
+
+
 
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (!ranOnce)
+            {
+                transform.position = new Vector3(playerTransform.position.x,
+                transform.position.y + 4);
+            }
             bossSpeed = DetermineSpeed();
             MoveTowardsPlayer(bossSpeed);  
         }
@@ -67,6 +71,6 @@ namespace Platformer.Gameplay
             }
 
         }
-        void GetReadyToAttack() {bossSprite.ChangeSprite();}
+       
     }
 }
