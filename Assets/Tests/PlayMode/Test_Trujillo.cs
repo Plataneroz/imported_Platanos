@@ -52,21 +52,28 @@ public class Test_Trujillo
     public IEnumerator Test_MoveTowardsPlayer()
     {
         Init();
-        playerTransform.position = new Vector3(2,2,2);
-        trujilloWithComponent.transform.position = new Vector3(13, 13, 13);
+        playerTransform.position = new Vector3(200,1,0);
+        trujilloWithComponent.transform.position = new Vector3(13, 1,0);
         trujilloWithComponent.xOffset = 13;
         trujilloWithComponent.playerTransform = playerTransform;
         var bossSpriteObj = new GameObject();
         trujilloWithComponent.bossSprite =  bossSpriteObj.AddComponent<BossSprite>();
         trujilloWithComponent.bossSprite.spriteRenderer = bossSpriteObj.AddComponent<SpriteRenderer>();
 
-        //"(2.0, 449.0, 0.0)"
-        while (!stop)
-        {
-            trujilloWithComponent.MoveTowardsPlayer(1);
-            yield return new WaitForSeconds(2);
-            stop = true;
-        }
-        Assert.AreEqual(true,true);
+       
+
+        trujilloWithComponent.MoveTowardsPlayer(1);
+        yield return new WaitForSeconds(1);
+        Assert.AreEqual(trujilloWithComponent.transform.position.x, playerTransform.position.x, "trjuillo is not moving in the positive direction towards player");
+        Assert.AreEqual(trujilloWithComponent.xOffset,playerTransform.position.x + 7 , "Trujillo's is xoffset is not being set to positivie 7");
+
+        
+        playerTransform.position = new Vector3(-13, 1, 0);
+        trujilloWithComponent.transform.position = new Vector3(200, 1, 0);
+        trujilloWithComponent.xOffset = 200;
+        trujilloWithComponent.MoveTowardsPlayer(1);
+        yield return new WaitForSeconds(1);
+        Assert.AreEqual(trujilloWithComponent.transform.position.x, playerTransform.position.x, "trjuillo is not moving in the positive direction towards player");
+        Assert.AreEqual(trujilloWithComponent.xOffset, playerTransform.position.x - 7, "Trujillo's is xoffset is not being set to negative 7");
     }
 }
