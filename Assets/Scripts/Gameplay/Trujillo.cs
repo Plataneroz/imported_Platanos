@@ -10,7 +10,6 @@ namespace Platformer.Gameplay
     {
        
         public Transform playerTransform;
-        float Timer =2;
         float bossSpeed;
         public BossSprite bossSprite;
         public float xOffset;
@@ -58,16 +57,7 @@ namespace Platformer.Gameplay
             var targetPositon = new Vector2(xOffset, playerTransform.position.y);
             transform.position = Vector2.MoveTowards(transform.position,
             targetPositon , speed * Time.deltaTime);
-            ResetTimerForXOffset();
-        }
-        void ResetTimerForXOffset()
-        {
-            Timer -= Time.deltaTime;
-            if (Timer <= 0)
-            {
-                Timer = 2;
-            }
-
+            
         }
        
     }

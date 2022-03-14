@@ -9,11 +9,14 @@ namespace Platformer.Mechanics {
     public class PlayerWeaponAim : MonoBehaviour
     {
         public float angle ;
-        public Transform gunAim;  
-
+        public Transform gunAim;
+        public Camera cam;
 
         // Update is called once per frame
-
+        private void Start()
+        {
+           if (!cam) { cam = Camera.main; }
+        }
         public  void HandleAiming(Vector2 lookingDirection , String device)
         {
             
@@ -21,7 +24,7 @@ namespace Platformer.Mechanics {
                 gunAim.eulerAngles = new Vector3(0, 0, -Mathf.Atan2(lookingDirection.y, lookingDirection.x) * 180 / -Mathf.PI); }
             else
             {
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(lookingDirection);
+                Vector3 mousePosition = cam.ScreenToWorldPoint(lookingDirection);
                 Vector3 aimDirection = (mousePosition - transform.position).normalized;
 
                 if (transform.localScale.x < 0)
@@ -33,7 +36,7 @@ namespace Platformer.Mechanics {
                 {
                     angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
                 }
-                gunAim.eulerAngles = new Vector3(0, 0, angle);
+                 gunAim.eulerAngles = new Vector3(0, 0, angle);
 
             }
 

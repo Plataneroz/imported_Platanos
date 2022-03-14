@@ -76,4 +76,6 @@ public class Test_Trujillo
         Assert.AreEqual(trujilloWithComponent.transform.position.x, playerTransform.position.x, "trjuillo is not moving in the positive direction towards player");
         Assert.AreEqual(trujilloWithComponent.xOffset, playerTransform.position.x - 7, "Trujillo's is xoffset is not being set to negative 7");
     }
+
+
 }
