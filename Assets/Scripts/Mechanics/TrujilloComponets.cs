@@ -1,22 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Platformer.Mechanics;
-using Platformer.Gameplay;
 
+using Platformer.Gameplay;
+namespace Platformer.Mechanics
+{ 
 public class TrujilloComponets : MonoBehaviour
-{
+ {
     public Health health;
     public BossSprite bossSprite;
     public ActivateTrujillo activateTrujillo;
     public TrujilloKartActions trujilloKartActions;
 
-    private void Start()
-    {
-        health = GetComponent<Health>();
-        bossSprite = GetComponent<BossSprite>();
-        activateTrujillo = GetComponent<ActivateTrujillo>();
-        trujilloKartActions = GetComponent<TrujilloKartActions>();
+         void Start()
+        {
+            health = GetComponent<Health>();
+            bossSprite = GetComponent<BossSprite>();
+            activateTrujillo = GetComponent<ActivateTrujillo>();
+            trujilloKartActions = GetComponent<TrujilloKartActions>();
 
+        }
     }
 }
