@@ -7,7 +7,7 @@ using Platformer.Model;
 using static Platformer.Core.Simulation;
 namespace Platformer.Gameplay
 {
-    public class EggAndBossCollision : Simulation.Event<EggAndBossCollision>
+    public class EggAndTrujilloCollision : Simulation.Event<EggAndTrujilloCollision>
     {
         public TrujilloComponets trujilloComponents;
         // Start is called before the first frame update

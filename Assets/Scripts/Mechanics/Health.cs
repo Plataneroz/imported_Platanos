@@ -56,6 +56,7 @@ namespace Platformer.Mechanics
         public void Die()
         {
             while (currentHP > 0) Decrement();
+            if(currentHP <= 0) { Destroy(gameObject); }
         }
 
         void Awake()

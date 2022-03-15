@@ -15,10 +15,11 @@ namespace Platformer.Gameplay
         BossSprite bossSprite;
         [SerializeField]
         float speed =1;
+        public bool stopMovement;
         // Start is called before the first frame update
         void Start()
         {
-            bossSprite =  gameObject.GetComponent<BossSprite>();
+            bossSprite = gameObject.GetComponent<BossSprite>(); 
             
           
         }
@@ -26,7 +27,10 @@ namespace Platformer.Gameplay
         // Update is called once per frame
         void Update()
         {
-            MoveTowardsPlayer(1,1);
+            if (!stopMovement)
+            {
+                MoveTowardsPlayer(1, 1);
+            }
         }
        
 
