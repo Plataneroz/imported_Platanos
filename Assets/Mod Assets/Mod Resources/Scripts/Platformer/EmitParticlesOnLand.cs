@@ -25,12 +25,12 @@ public class EmitParticlesOnLand : MonoBehaviour
             }
         }
 
-        if (emitOnEnemyDeath) {
-            Platformer.Gameplay.EnemyDeath.OnExecute += EnemyDeath_OnExecute;
+        /*if (emitOnEnemyDeath) {
+           // Platformer.Gameplay.EnemyDeath.OnExecute += EnemyDeath_OnExecute;
             void EnemyDeath_OnExecute(Platformer.Gameplay.EnemyDeath obj) {
                 p.Play();
             }
-        }
+        }*/
 
     }
 

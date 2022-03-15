@@ -43,7 +43,7 @@ namespace Platformer.Mechanics
                 else if (collision.collider.tag == "Boss")
                 {
                  var eggNBossColliding = Schedule<EggAndBossCollision>();
-                 eggNBossColliding.enemy = collision.gameObject.GetComponent<EnemyController>();
+                 eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
                     Destroy(gameObject, .5f);
                 }
             }    
