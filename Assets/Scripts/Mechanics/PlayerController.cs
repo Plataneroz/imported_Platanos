@@ -35,6 +35,7 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         CapsuleCollider2D capsuleCollider2D;
         public Health health;
+        public LifeBar lifeBar;
         public bool controlEnabled = true;
 
         bool jumpancelled;

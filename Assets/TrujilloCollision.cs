@@ -16,10 +16,13 @@ public class TrujilloCollision : MonoBehaviour
                 
                 player.health.Decrement();
                 
-            player.Teleport(new Vector3(player.transform.position.x +4,
-                                        player.transform.position.y +3,0));
+
             if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
-               
+                else
+                {
+                    player.Teleport(new Vector3(player.transform.position.x + 4,
+                          player.transform.position.y + 3, 0));
+                    player.lifeBar.ChangeSprite(); }
                 //
             }
     }

@@ -13,6 +13,7 @@ namespace Platformer.Gameplay
         Sprite[] spriteArray;
         [SerializeField]
         int currentSprite;
+        
         public void ChangeSprite()
         {
             spriteRenderer.sprite = spriteArray[currentSprite];
