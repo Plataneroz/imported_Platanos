@@ -124,8 +124,8 @@ namespace Platformer.Mechanics
         public void OnMove(InputAction.CallbackContext cont)
         {
 
+            if (controlEnabled) { move = cont.ReadValue<Vector2>(); }
             
-            move = cont.ReadValue<Vector2>();
 
         }
 

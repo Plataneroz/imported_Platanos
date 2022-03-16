@@ -10,12 +10,13 @@ namespace Platformer.Gameplay
     public class EggAndTrujilloCollision : Simulation.Event<EggAndTrujilloCollision>
     {
         public TrujilloComponets trujilloComponents;
+        
         // Start is called before the first frame update
         public override void Execute()
         {
 
 
-
+            
                    if (trujilloComponents != null)
             {
                 trujilloComponents.health.Decrement();

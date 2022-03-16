@@ -14,14 +14,15 @@ namespace Platformer.Mechanics
         private IEnumerator coroutine;
         public int coroutineCounter;
         public bool triggerAction= true;
+        public float speed = 7;
         float random; 
         // Start is called before the first frame update
         void Start()
         {
-            coroutine = WaitForActions(Random.Range(4, 6.0f));
+            coroutine = WaitForActions(Random.Range(1, 6.0f));
             StartCoroutine(coroutine);
             rigidBod = GetComponent<Rigidbody2D>();
-            rigidBod.velocity = transform.right * 5;
+            rigidBod.velocity = transform.right * speed;
             transform.eulerAngles = new Vector3(0, 0, 39);
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.color = Color.red;
@@ -32,7 +33,10 @@ namespace Platformer.Mechanics
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null & harmFull)
             {
-                Schedule<PlayerDeath>();
+                player.health.Decrement();
+                player.Bounce(10);
+                if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
+                //
             }
             if (gameObject.layer == 7)
             {
