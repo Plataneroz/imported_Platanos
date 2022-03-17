@@ -28,7 +28,7 @@ namespace Platformer.Gameplay
                 {
 
                     // call trujillo
-                    trujilloComponents.activateTrujillo.JumpOffKartTrujillo() ;
+                    trujilloComponents.activiatePhase.One() ;
                     trujilloComponents.spriteEffects.ChangeSprite();
 
                 }

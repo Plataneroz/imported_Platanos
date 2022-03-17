@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer.Gameplay { 
-public class TrujilloKartAttack : MonoBehaviour
+public class CreateProjectile : MonoBehaviour
 {
-    public GameObject eggs;
+    public GameObject projectile;
     public float Timer = 5;
-    public float eggOffset;
+    public float yOffset;
     bool triggerAction = true;
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
-            StartCoroutine(WaitForActions(Timer, eggOffset));
+            StartCoroutine(WaitForActions(Timer, yOffset));
     }
 
     public IEnumerator WaitForActions(float waitTime, float offset)
@@ -23,15 +23,15 @@ public class TrujilloKartAttack : MonoBehaviour
             {
                 triggerAction = !triggerAction;
                 yield return new WaitForSeconds(waitTime);
-                CreateEggs(offset);
+                Launch(offset);
                 triggerAction = !triggerAction;
 
             }
         }
-    public void CreateEggs(float offset)
+    public void Launch(float offset)
         {
-            eggs.transform.position = new Vector3(transform.position.x, transform.position.y + offset);
-            Instantiate(eggs);
+            projectile.transform.position = new Vector3(transform.position.x, transform.position.y + offset);
+            Instantiate(projectile);
         }
     }
 

@@ -19,11 +19,11 @@ public class Test_TrujilloKartAttacks
         GameObject eggs = new GameObject();
         eggs.name = "eggs";
         GameObject TrujilloKartObj = new GameObject();
-        var trujilloKartAttack = TrujilloKartObj.AddComponent<TrujilloKartAttack>() ;
-        trujilloKartAttack.eggs = eggs;
+        var trujilloKartAttack = TrujilloKartObj.AddComponent<CreateProjectile>() ;
+        trujilloKartAttack.projectile = eggs;
 
         yield return null;
-        trujilloKartAttack.CreateEggs(2);
+        trujilloKartAttack.Launch(2);
 
         Scene scene = SceneManager.GetActiveScene();
         GameObject[] objs = scene.GetRootGameObjects();

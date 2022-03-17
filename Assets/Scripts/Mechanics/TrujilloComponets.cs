@@ -9,14 +9,14 @@ public class TrujilloComponets : MonoBehaviour
  {
     public Health health;
     public SpriteEffects spriteEffects;
-    public ActivateTrujillo activateTrujillo;
+    public ActiviatePhase activiatePhase;
    // public TrujilloKartActions trujilloKartActions;
 
          void Start()
         {
             health = GetComponent<Health>();
             spriteEffects = GetComponent<SpriteEffects>();
-            activateTrujillo = GetComponent<ActivateTrujillo>();
+            activiatePhase = GetComponent<ActiviatePhase>();
            // trujilloKartActions = GetComponent<TrujilloKartActions>();
 
         }
