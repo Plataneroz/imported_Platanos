@@ -18,7 +18,7 @@ namespace Platformer.Gameplay
         void Start()
         {
 
-
+        
 
         }
 
@@ -29,6 +29,7 @@ namespace Platformer.Gameplay
             {
                 transform.position = new Vector3(playerTransform.position.x,
                 transform.position.y + 4);
+                ranOnce = true;
             }
             bossSpeed = DetermineSpeed();
             MoveTowardsPlayer(bossSpeed);  

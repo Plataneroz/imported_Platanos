@@ -13,17 +13,19 @@ namespace Platformer.Mechanics
         Rigidbody2D rigidBod;
         private IEnumerator coroutine;
         public int coroutineCounter;
-        public bool triggerAction= true;
         public float speed = 7;
+        public float launchAngle = 60;
+        public float secondUntilSafeToGrab = 6;
         float random; 
         // Start is called before the first frame update
         void Start()
         {
-            coroutine = WaitForActions(Random.Range(1, 6.0f));
+            coroutine = WaitForActions(Random.Range(1, secondUntilSafeToGrab));
             StartCoroutine(coroutine);
             rigidBod = GetComponent<Rigidbody2D>();
+            transform.eulerAngles = new Vector3(0, 0, launchAngle);
             rigidBod.velocity = transform.right * speed;
-            transform.eulerAngles = new Vector3(0, 0, 39);
+            
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.color = Color.red;
 
