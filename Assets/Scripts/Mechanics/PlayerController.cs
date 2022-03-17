@@ -50,6 +50,7 @@ namespace Platformer.Mechanics
         int pressTime;
 
         int grabCount;
+        public SpriteEffects spriteEffects;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
@@ -66,10 +67,13 @@ namespace Platformer.Mechanics
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<BoxCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteEffects = GetComponent<SpriteEffects>();
+            spriteEffects.spriteRenderer = spriteRenderer;
             //animator = GetComponent<Animator>();
             capsuleCollider2D = GetComponent<CapsuleCollider2D>();
             capsuleCollider2D.enabled = false;
             grab = GetComponent<Grab>();
+
 
         }
 

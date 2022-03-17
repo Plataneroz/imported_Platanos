@@ -29,12 +29,12 @@ namespace Platformer.Gameplay
 
                     // call trujillo
                     trujilloComponents.activateTrujillo.JumpOffKartTrujillo() ;
-                    trujilloComponents.bossSprite.ChangeSprite();
+                    trujilloComponents.spriteEffects.ChangeSprite();
 
                 }
                 else if (trujilloComponents.health.GetCurrentHP() <= 9 
                      )
-                { trujilloComponents.bossSprite.ChangeSprite(); }
+                { trujilloComponents.spriteEffects.ChangeSprite(); }
                
             }
             else

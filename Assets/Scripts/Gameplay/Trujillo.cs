@@ -11,7 +11,7 @@ namespace Platformer.Gameplay
        
         public Transform playerTransform;
         float bossSpeed;
-        public BossSprite bossSprite;
+        public SpriteEffects spriteEffects;
         public float xOffset;
         public bool ranOnce = false;
         // Start is called before the first frame update
@@ -51,8 +51,8 @@ namespace Platformer.Gameplay
             var enemyDirection = transform.InverseTransformPoint(playerTransform.position);
             if ( transform.position.x == xOffset )
             {  //|| 0.25777f == xOffset         
-                if (enemyDirection.x < 0) { xOffset = playerTransform.position.x - 7; bossSprite.FlipSprite(); }
-                else if (enemyDirection.x > 0) { xOffset = playerTransform.position.x + 7; bossSprite.FlipSprite(); }
+                if (enemyDirection.x < 0) { xOffset = playerTransform.position.x - 7; spriteEffects.FlipSprite(); }
+                else if (enemyDirection.x > 0) { xOffset = playerTransform.position.x + 7; spriteEffects.FlipSprite(); }
             }
 
             var targetPositon = new Vector2(xOffset, playerTransform.position.y);

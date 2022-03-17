@@ -8,14 +8,14 @@ namespace Platformer.Mechanics
 public class TrujilloComponets : MonoBehaviour
  {
     public Health health;
-    public BossSprite bossSprite;
+    public SpriteEffects spriteEffects;
     public ActivateTrujillo activateTrujillo;
    // public TrujilloKartActions trujilloKartActions;
 
          void Start()
         {
             health = GetComponent<Health>();
-            bossSprite = GetComponent<BossSprite>();
+            spriteEffects = GetComponent<SpriteEffects>();
             activateTrujillo = GetComponent<ActivateTrujillo>();
            // trujilloKartActions = GetComponent<TrujilloKartActions>();
 

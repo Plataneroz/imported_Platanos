@@ -57,8 +57,8 @@ public class Test_Trujillo
         trujilloWithComponent.xOffset = 13;
         trujilloWithComponent.playerTransform = playerTransform;
         var bossSpriteObj = new GameObject();
-        trujilloWithComponent.bossSprite =  bossSpriteObj.AddComponent<BossSprite>();
-        trujilloWithComponent.bossSprite.spriteRenderer = bossSpriteObj.AddComponent<SpriteRenderer>();
+        trujilloWithComponent.spriteEffects =  bossSpriteObj.AddComponent<SpriteEffects>();
+        trujilloWithComponent.spriteEffects.spriteRenderer = bossSpriteObj.AddComponent<SpriteRenderer>();
 
        
 

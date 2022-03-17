@@ -38,7 +38,9 @@ namespace Platformer.Mechanics
                 player.health.Decrement();
                 player.Bounce(10);
                 if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
-                else { player.lifeBar.ChangeSprite(); }
+                else {
+                    StartCoroutine(player.spriteEffects.Blink());
+                    player.lifeBar.ChangeSprite(); }
             }
             if (gameObject.layer == 7)
             {

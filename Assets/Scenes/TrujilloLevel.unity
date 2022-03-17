@@ -1067,6 +1067,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2db6a2937c9457aa323d712e7191f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &123912309 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7033105427539904350, guid: 8077f9eb94f2c47cca5e1739b638c473,
+    type: 3}
+  m_PrefabInstance: {fileID: 7164095868642726183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &123912310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123912297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001f70bc0cd63416dbdd91e8013f61df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 123912309}
+  spriteArray: []
+  currentSprite: 0
 --- !u!1 &146538475
 GameObject:
   m_ObjectHideFlags: 0
@@ -98617,7 +98638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
-  bossSprite: {fileID: 0}
+  spriteEffects: {fileID: 0}
   activateTrujillo: {fileID: 0}
 --- !u!114 &618440468
 MonoBehaviour:
@@ -98631,6 +98652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9bb7d22797b4621b3bd1b91a33ce2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xOffset: 2
+  yOffset: 3
 --- !u!1 &628321268
 GameObject:
   m_ObjectHideFlags: 0
@@ -99076,6 +99099,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9bb7d22797b4621b3bd1b91a33ce2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xOffset: 2
+  yOffset: 3
 --- !u!114 &660497697 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5229645049481600813, guid: e09c71e418ad84361be3a803c9730fd7,
@@ -108773,13 +108798,14 @@ GameObject:
   - component: {fileID: 1460941547}
   - component: {fileID: 1460941550}
   - component: {fileID: 1460941551}
+  - component: {fileID: 1460941552}
   m_Layer: 10
   m_Name: SamuraiAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1460941547
 Animator:
   serializedVersion: 3
@@ -108859,7 +108885,7 @@ Transform:
   m_GameObject: {fileID: 1460941546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.91, y: -1, z: 0}
-  m_LocalScale: {x: 0.2947335, y: 0.31754342, z: 1}
+  m_LocalScale: {x: 0.32, y: 0.31754342, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 18
@@ -108903,6 +108929,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.743125, y: 5.870509}
   m_EdgeRadius: 0
+--- !u!114 &1460941552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460941546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9bb7d22797b4621b3bd1b91a33ce2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: 2
+  yOffset: 3
 --- !u!1 &1464023011
 GameObject:
   m_ObjectHideFlags: 0

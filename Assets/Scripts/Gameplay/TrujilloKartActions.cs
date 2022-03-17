@@ -12,14 +12,14 @@ namespace Platformer.Gameplay
        // public PlatformerModel model  = Simulation.GetModel<PlatformerModel>();;
         //[SerializeField]
         public Transform playerTrans;
-        BossSprite bossSprite;
+        SpriteEffects spriteEffects;
         [SerializeField]
         float speed =1;
         public bool stopMovement;
         // Start is called before the first frame update
         void Start()
         {
-            bossSprite = gameObject.GetComponent<BossSprite>(); 
+            spriteEffects = gameObject.GetComponent<SpriteEffects>(); 
             
           
         }
@@ -34,7 +34,7 @@ namespace Platformer.Gameplay
         }
        
 
-        void GetReadyToAttack() { bossSprite.ChangeSprite(); }
+        void GetReadyToAttack() { spriteEffects.ChangeSprite(); }
 
         public void MoveTowardsPlayer(float speed, float xOffset)
         {
