@@ -6,7 +6,7 @@ namespace Platformer.Gameplay {
 public class CreateProjectile : MonoBehaviour
 {
     public GameObject projectile;
-    public float Timer = 5;
+    public float Timer = 3;
     public float yOffset;
     bool triggerAction = true;
     // Start is called before the first frame update

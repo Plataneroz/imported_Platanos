@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3628919622003739440}
   - component: {fileID: 3628919622003739447}
   - component: {fileID: 3628919622003739446}
-  m_Layer: 0
+  - component: {fileID: 255088281784009779}
+  m_Layer: 12
   m_Name: Toton
-  m_TagString: Untagged
+  m_TagString: Toton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +100,19 @@ MonoBehaviour:
   speedLimit: 12
   launchAngleLimit: -160
   forHowLongIsItDangerous: 6
+--- !u!58 &255088281784009779
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628919622003739445}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.18752167, y: 0.47}
+  serializedVersion: 2
+  m_Radius: 0.5324739

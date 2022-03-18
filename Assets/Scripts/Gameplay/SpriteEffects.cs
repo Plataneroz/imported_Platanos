@@ -28,9 +28,14 @@ namespace Platformer.Gameplay
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
+        public void StartToBlink()
+        {
+            StartCoroutine(Blink());
+        }
+
         public IEnumerator Blink()
         {
-            Debug.Log("Calling blink");
+           
             Color defaultColor = spriteRenderer.color;
 
             spriteRenderer.color = new Color(1, 0, 0, .5f);
@@ -39,13 +44,7 @@ namespace Platformer.Gameplay
 
             spriteRenderer.color = defaultColor;
 
-            yield return new WaitForSeconds(0.05f);
-
-            spriteRenderer.color = new Color(1, 0, 0, .5f);
-
-            yield return new WaitForSeconds(0.05f);
-
-            spriteRenderer.color = defaultColor;
+            
         }
 
      

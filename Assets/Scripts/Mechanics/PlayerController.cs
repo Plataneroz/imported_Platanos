@@ -34,6 +34,7 @@ namespace Platformer.Mechanics
         /*internal new*/ public BoxCollider2D collider2d;
         /*internal new*/ public AudioSource audioSource;
         CapsuleCollider2D capsuleCollider2D;
+        public PlayerRestTime playerRestTime;
         public Health health;
         public LifeBar lifeBar;
         public bool controlEnabled = true;
@@ -73,7 +74,7 @@ namespace Platformer.Mechanics
             capsuleCollider2D = GetComponent<CapsuleCollider2D>();
             capsuleCollider2D.enabled = false;
             grab = GetComponent<Grab>();
-
+            playerRestTime = GetComponent<PlayerRestTime>();
 
         }
 
@@ -169,9 +170,9 @@ namespace Platformer.Mechanics
         {      
             if(context.started) { startTime = context.time; }
             if (context.canceled) {
-                pressTime = Mathf.RoundToInt((float)((float)context.time - startTime));
-                distance = pressTime > 2 ? 12 : pressTime * 3;
-                grab.Throwing(distance ); }
+               // pressTime = Mathf.RoundToInt((float)((float)context.time - startTime));
+                //distance = pressTime > 1 ? 12 : pressTime * 3;
+                grab.Throwing(14 ); }
         }
         protected override void ComputeVelocity()
         {

@@ -65,7 +65,7 @@ namespace Platformer.Mechanics
                 currentColliderGameObj.tag = "pickUpObj";
                 currentColliderGameObj.gameObject.layer = 7;
                 ColliderRigidBod.isKinematic = false;
-                pickedUpObjCapCollider.isTrigger = false;
+                //pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.position = transform.GetChild(0).position;
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
                 ColliderRigidBod.velocity = transform.GetChild(0).transform.right * distance;

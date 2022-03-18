@@ -33,16 +33,24 @@ namespace Platformer.Mechanics
         void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null & harmFull)
+            if (player != null & harmFull )
             {
-                player.health.Decrement();
-                player.Bounce(10);
-                if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
-                else {
-                    StartCoroutine(player.spriteEffects.Blink());
-                    player.lifeBar.ChangeSprite(); }
+                if (player.playerRestTime.canHarmPlayer)
+                {
+                    player.playerRestTime.CantHurtPlayer();
+                    player.health.Decrement();
+                    player.Bounce(10);
+                    if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
+                    else
+                    {
+                        StartCoroutine(player.spriteEffects.Blink());
+                        player.lifeBar.ChangeSprite();
+                    }
+                    
+                }
+                
             }
-            if (gameObject.layer == 7)
+            else if (gameObject.layer == 7)
             {
                 if (collision.collider.tag == "Ground" )
                 { Destroy(gameObject, .5f); }
@@ -67,9 +75,7 @@ namespace Platformer.Mechanics
                 ChangeColor();
                 NotHarmfull();
                 StopAllCoroutines();
-                /* yield return new WaitForSeconds();
-                 HatchEgg();
-                 StopAllCoroutines();*/
+
             }
         }
 

@@ -20,8 +20,10 @@ namespace Platformer.Mechanics {
         public  void HandleAiming(Vector2 lookingDirection , String device)
         {
             
-            if (!device.Contains("Mouse")) {
-                gunAim.eulerAngles = new Vector3(0, 0, -Mathf.Atan2(lookingDirection.y, lookingDirection.x) * 180 / -Mathf.PI); }
+            if (!device.Contains("Mouse"))
+            {
+                gunAim.eulerAngles = new Vector3(0, 0, -Mathf.Atan2(lookingDirection.y, lookingDirection.x) * 180 / -Mathf.PI);
+            }
             else
             {
                 Vector3 mousePosition = cam.ScreenToWorldPoint(lookingDirection);
