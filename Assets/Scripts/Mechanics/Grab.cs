@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 
 
@@ -30,6 +30,7 @@ namespace Platformer.Mechanics
                 pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
                 ColliderRigidBod = collision.attachedRigidbody;
                 pickedUpObjTrans = collision.transform;
+                
                 FollowingPlayer();
 
             }
@@ -51,7 +52,7 @@ namespace Platformer.Mechanics
             if (ColliderRigidBod != null)
             {
                 ColliderRigidBod.isKinematic = false;
-                pickedUpObjCapCollider.isTrigger = false;
+                
                 pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
                 ColliderRigidBod = null;
@@ -62,9 +63,12 @@ namespace Platformer.Mechanics
         {
             if (ColliderRigidBod != null)
             {
+                
                 currentColliderGameObj.tag = "pickUpObj";
                 currentColliderGameObj.gameObject.layer = 7;
                 ColliderRigidBod.isKinematic = false;
+                //physic.ignoreCollision not working here
+                StartCoroutine(ChangeTriggerToFalse());
                 //pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.position = transform.GetChild(0).position;
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
@@ -73,10 +77,19 @@ namespace Platformer.Mechanics
                 pickedUpObjTrans = null;
                 ColliderRigidBod = null;
             }
+
+     
+        }
+
+        public IEnumerator ChangeTriggerToFalse()
+        {
+
+            yield return new WaitForSeconds(0.05f);
+            pickedUpObjCapCollider.isTrigger = false;
+
         }
 
     }
-
 
 
 
