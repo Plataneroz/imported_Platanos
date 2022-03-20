@@ -25,11 +25,13 @@ namespace Platformer.Gameplay
         }
         public void Two()
         {
+
             phaseTwo.SetActive(true);
             //trujillo.transform.position = new Vector3(model.player.transform.position.x, model.player.transform.position.y + 4);   
         }
         public void Three()
         {
+
             phaseThree.SetActive(true);
             //trujillo.transform.position = new Vector3(model.player.transform.position.x, model.player.transform.position.y + 4);   
         }

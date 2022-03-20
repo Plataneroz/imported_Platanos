@@ -57,7 +57,7 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
     void HornAttack()
     {
         projectile.SetActive(true);
-      //  StartCoroutine(ResetHorn());
+     
     }
     public IEnumerator ResetHorn()
     {
