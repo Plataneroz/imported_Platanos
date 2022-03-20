@@ -9,7 +9,7 @@ namespace Platformer.Mechanics
     /// <summary>
     /// A simple controller for enemies. Provides movement control over a patrol path.
     /// </summary>
-    [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
+   /*/ [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
     public class EnemyController : MonoBehaviour
     {
         public PatrolPath path;
@@ -56,5 +56,5 @@ namespace Platformer.Mechanics
           
         }
 
-    }
+    }*/
 }
