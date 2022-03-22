@@ -10,12 +10,13 @@ public class SineWaveMovement : MonoBehaviour
     }
     void DisableObj()
     {
+        transform.position = new Vector3(20,.8f,0);
         gameObject.SetActive(false);
     }
 
-    [SerializeField]
-    float moveSpeed = 5f;
-
+    //[SerializeField]
+    float moveSpeed = 10f;
+    float pointToDisable = -10;
     [SerializeField]
     float frequency = 20f;
 
@@ -36,7 +37,7 @@ public class SineWaveMovement : MonoBehaviour
     {
         MoveLeft();
 
-       
+       // if (pos.x < pointToDisable) { DisableObj(); }
     }
 
     void DirectionFacing() { 
