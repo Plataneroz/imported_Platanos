@@ -54,33 +54,34 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
         animator.Play(newState);
     }
 
-    public void PauseAnimation()
-    {
-        animator.speed = 0;
-    }
+    /*  public void PauseAnimation()
+      {
+          animator.speed = 0;
+      }
 
-    public void UnPauseAnimation()
-    {
-        animator.speed = 1;
-    }
+      public void UnPauseAnimation()
+      {
+          animator.speed = 1;
+      }
 
-    public void OneHornAttack()
-    {
-        projectile.SetActive(true);
-    }
+      public void OneHornAttack()
+      {
+          projectile.SetActive(true);
+      }
 
-    public void BothHornsAttack()
-    {
-        projectile.SetActive(true);
-        projectile2.SetActive(true);
-    }
-    public IEnumerator ResetHorn()
-    {
+      public void BothHornsAttack()
+      {
+          projectile.SetActive(true);
+          projectile2.SetActive(true);
+      }\
 
-        yield return new WaitForSeconds(3);
+      public IEnumerator ResetHorn()
+      {
 
-        projectile.SetActive(false);
-        HornBackOff();
-    }
+          yield return new WaitForSeconds(3);
 
+          projectile.SetActive(false);
+          HornBackOff();
+      }
+      */
 }
