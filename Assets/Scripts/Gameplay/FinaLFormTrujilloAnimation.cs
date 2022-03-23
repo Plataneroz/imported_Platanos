@@ -6,7 +6,7 @@ public class FinaLFormTrujilloAnimation : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    AnimationControls animationControls;
+    
 
     public void HornComesOFf()
     {

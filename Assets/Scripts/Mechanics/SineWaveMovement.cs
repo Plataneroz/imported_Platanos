@@ -35,9 +35,10 @@ public class SineWaveMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveLeft();
+       
 
-       // if (pos.x < pointToDisable) { DisableObj(); }
+       if(pos.x < pointToDisable) { MoveRight(); }
+        else { MoveLeft(); }
     }
 
     void DirectionFacing() { 

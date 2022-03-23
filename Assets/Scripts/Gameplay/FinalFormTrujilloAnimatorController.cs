@@ -7,13 +7,16 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
     [SerializeField]
     GameObject projectile;
     Animator animator;
-    Animation projectileAnimation;
+    [SerializeField]
+    GameObject projectile2;
     private string currentState;
     Animation anim;
     public enum TrujillosFinalFormAnimation
     {
         HornOn,
         HornOff,
+        CurvedHorn,
+        Yelling,
     }
 
 
@@ -37,7 +40,14 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
         ChangeAnimationState(TrujillosFinalFormAnimation.HornOff.ToString());
     }
 
-
+    public void CurvedHornAttack()
+    {
+        ChangeAnimationState(TrujillosFinalFormAnimation.CurvedHorn.ToString());
+    }
+    public void YellingAttack()
+    {
+        ChangeAnimationState(TrujillosFinalFormAnimation.Yelling.ToString());
+    }
     public void ChangeAnimationState(string newState)
     {
         if (currentState == newState)  return;
@@ -54,10 +64,15 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
         animator.speed = 1;
     }
 
-    void HornAttack()
+    public void OneHornAttack()
     {
         projectile.SetActive(true);
-     
+    }
+
+    public void BothHornsAttack()
+    {
+        projectile.SetActive(true);
+        projectile2.SetActive(true);
     }
     public IEnumerator ResetHorn()
     {
