@@ -36,5 +36,5 @@ namespace Platformer.Gameplay
             //trujillo.transform.position = new Vector3(model.player.transform.position.x, model.player.transform.position.y + 4);   
         }
 
-    }
+     }
     }

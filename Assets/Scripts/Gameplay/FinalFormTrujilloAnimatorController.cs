@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class FinalFormTrujilloAnimatorController : MonoBehaviour
 {
-    [SerializeField]
-    GameObject projectile;
+
     Animator animator;
-    [SerializeField]
-    GameObject projectile2;
     private string currentState;
     Animation anim;
     public enum TrujillosFinalFormAnimation
@@ -22,7 +19,6 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
 
     private void Start()
     {
-       // projectileAnimation = projectile.GetComponent<Animation>();
         animator = GetComponent<Animator>();
         anim = GetComponent<Animation>();
     }
@@ -54,34 +50,5 @@ public class FinalFormTrujilloAnimatorController : MonoBehaviour
         animator.Play(newState);
     }
 
-    /*  public void PauseAnimation()
-      {
-          animator.speed = 0;
-      }
-
-      public void UnPauseAnimation()
-      {
-          animator.speed = 1;
-      }
-
-      public void OneHornAttack()
-      {
-          projectile.SetActive(true);
-      }
-
-      public void BothHornsAttack()
-      {
-          projectile.SetActive(true);
-          projectile2.SetActive(true);
-      }\
-
-      public IEnumerator ResetHorn()
-      {
-
-          yield return new WaitForSeconds(3);
-
-          projectile.SetActive(false);
-          HornBackOff();
-      }
-      */
+    
 }
