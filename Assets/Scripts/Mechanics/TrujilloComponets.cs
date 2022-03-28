@@ -15,10 +15,8 @@ public class TrujilloComponets : MonoBehaviour
          void Start()
         {
             health = GetComponent<Health>();
-            activiatePhase = GetComponent<ActiviatePhase>();
+           // activiatePhase = GetComponent<ActiviatePhase>();
             trujilloAnimatorController = GetComponent<TrujilloAnimatorController>();
-          
-
         }
     }
 }

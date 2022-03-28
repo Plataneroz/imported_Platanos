@@ -5,14 +5,14 @@ using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
 namespace Platformer.Gameplay
 {
-    public class SamuraiMovement : MonoBehaviour
+    public class BackAndForwardMovement : MonoBehaviour
     {
         public Transform farEnd;
         private Vector3 frometh;
         private Vector3 untoeth;
         private float secondsForOneLength = 5f;
         float distanceBetweenPoints;
-        SpriteRenderer spriteRen;
+        public SpriteRenderer spriteRen;
         float lastXVal;
         void Start()
         {
@@ -20,7 +20,7 @@ namespace Platformer.Gameplay
 
             var endPoint = new Vector3(farEnd.position.x, transform.position.y, transform.position.z);
             untoeth = endPoint;
-            spriteRen = GetComponent<SpriteRenderer>();
+           // spriteRen = GetComponent<SpriteRenderer>();
 
         }
 

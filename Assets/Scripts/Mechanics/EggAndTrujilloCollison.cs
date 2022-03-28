@@ -26,13 +26,13 @@ namespace Platformer.Gameplay
                 }
                 else if (trujilloComponents.health.GetCurrentHP() == 1)
                 {
-                    trujilloComponents.activiatePhase.Three();
+                   // trujilloComponents.activiatePhase.Three();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseThree();
                 }
 
                 else if (trujilloComponents.health.GetCurrentHP() == 5)
                 {
-                    trujilloComponents.activiatePhase.Two();
+                    //trujilloComponents.activiatePhase.Two();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseTwo();
                 }
 
@@ -40,7 +40,7 @@ namespace Platformer.Gameplay
                 {
 
                     // call trujillo
-                    trujilloComponents.activiatePhase.One();
+                    //trujilloComponents.activiatePhase.One();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseThree();
 
                 }

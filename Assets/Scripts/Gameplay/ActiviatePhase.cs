@@ -20,21 +20,33 @@ namespace Platformer.Gameplay
 
         public void One()
         {
-            phaseOne.SetActive(true);
-                //trujillo.transform.position = new Vector3(model.player.transform.position.x, model.player.transform.position.y + 4);   
-        }
+            if(!phaseOne.activeSelf) phaseOne.SetActive(true);
+         }
         public void Two()
         {
 
-            phaseTwo.SetActive(true);
-            //trujillo.transform.position = new Vector3(model.player.transform.position.x, model.player.transform.position.y + 4);   
+            if(!phaseTwo.activeSelf)phaseTwo.SetActive(true);
         }
         public void Three()
         {
-
-            phaseThree.SetActive(true);
-            //trujillo.transform.position = new Vector3(model.player.transform.position.x, model.player.transform.position.y + 4);   
+            if (!phaseThree.activeSelf)  phaseThree.SetActive(true); 
+            
         }
 
-     }
+        public void OneOff()
+        {
+            if (!phaseOne) phaseOne.SetActive(false);
+        }
+        public void TwoOff()
+        {
+
+            if (!phaseTwo.activeSelf) phaseTwo.SetActive(false);
+        }
+        public void ThreeOff()
+        {
+             phaseThree.SetActive(false);
+
+        }
+
+    }
     }
