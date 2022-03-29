@@ -9,6 +9,13 @@ namespace Platformer.Gameplay
     {
         public float xOffset = 2;
         public float yOffset = 3;
+        Health health;
+        SpriteEffects spriteEffects;
+        private void Start()
+        {
+            health = GetComponent<Health>();
+            spriteEffects = GetComponent<SpriteEffects>();
+        }
         // Start is called before the first frame update
         void OnCollisionEnter2D(Collision2D collision)
         {
@@ -18,6 +25,10 @@ namespace Platformer.Gameplay
                 var bossAndPlayerCollision = Schedule<BossAndPlayerCollision>();
                 bossAndPlayerCollision.player = player;
             }
+            else if (collision.gameObject.tag =="pickUpObj") {
+
+                Schedule<EggAndTrujilloCollision>();
+ }
         }
 
     }

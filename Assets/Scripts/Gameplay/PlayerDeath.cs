@@ -17,7 +17,7 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             SceneManager.LoadScene("TrujilloLevel");
-            var player = model.player;
+            
             /*if (player.health.IsAlive)
             {
                 player.health.Die();

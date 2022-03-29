@@ -10,9 +10,9 @@ namespace Platformer.Gameplay
         
         
          public SpriteRenderer spriteRenderer;
-        [SerializeField]
+        
         Sprite[] spriteArray;
-        [SerializeField]
+     
         int currentSprite;
 
 

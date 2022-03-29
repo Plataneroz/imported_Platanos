@@ -15,7 +15,13 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            Schedule<PlayerDeath>();
+            if(health.gameObject.tag =="Player")
+               Schedule<PlayerDeath>();
+            else
+            {
+                var villian =Schedule<EnemyDeath>();
+                villian.enemy = health.gameObject;
+            }
         }
     }
 }

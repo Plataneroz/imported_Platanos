@@ -14,25 +14,23 @@ namespace Platformer.Gameplay
         // Start is called before the first frame update
         public override void Execute()
         {
-
-
-
             if (trujilloComponents != null)
             {
                 trujilloComponents.health.Decrement();
+                trujilloComponents.spriteEffects.StartToBlink();
                 if (!trujilloComponents.health.IsAlive)
                 {
                     //Schedule<EnemyDeath>().trujilloComponents = trujilloComponents;
                 }
                 else if (trujilloComponents.health.GetCurrentHP() == 1)
                 {
-                   // trujilloComponents.activiatePhase.Three();
+                    trujilloComponents.activiatePhase.Three();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseThree();
                 }
 
                 else if (trujilloComponents.health.GetCurrentHP() == 5)
                 {
-                    //trujilloComponents.activiatePhase.Two();
+                    trujilloComponents.activiatePhase.Two();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseTwo();
                 }
 
@@ -40,8 +38,8 @@ namespace Platformer.Gameplay
                 {
 
                     // call trujillo
-                    //trujilloComponents.activiatePhase.One();
-                    trujilloComponents.trujilloAnimatorController.AnimatePhaseThree();
+                    trujilloComponents.activiatePhase.One();
+                    trujilloComponents.trujilloAnimatorController.AnimatePhaseOne();
 
                 }
                 //else if (trujilloComponents.health.GetCurrentHP() <= 9)

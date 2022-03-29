@@ -13,7 +13,7 @@ namespace Platformer.Gameplay
         
         public override void Execute()
         {
-           
+            trujilloComponets.gameObject.SetActive(false);
             //trujilloComponets._collider.enabled = false;
             //enemy.control.enabled = false;
            // if (enemy._audio && enemy.ouch)

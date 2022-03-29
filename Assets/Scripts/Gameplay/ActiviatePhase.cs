@@ -35,17 +35,16 @@ namespace Platformer.Gameplay
 
         public void OneOff()
         {
-            if (!phaseOne) phaseOne.SetActive(false);
+            if (phaseOne) phaseOne.SetActive(false);
         }
         public void TwoOff()
         {
 
-            if (!phaseTwo.activeSelf) phaseTwo.SetActive(false);
+            if (phaseTwo.activeSelf) phaseTwo.SetActive(false);
         }
         public void ThreeOff()
         {
-             phaseThree.SetActive(false);
-
+            if (phaseThree.activeSelf) phaseThree.SetActive(false);
         }
 
     }
