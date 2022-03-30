@@ -12,6 +12,7 @@ TagManager:
   - Toton
   - Lwall
   - Rwall
+  - Minion
   layers:
   - Default
   - TransparentFX

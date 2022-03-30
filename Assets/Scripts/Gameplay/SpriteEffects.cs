@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Platformer.Gameplay
+namespace Platformer.Mechanics
 {
     public class SpriteEffects : MonoBehaviour
     {

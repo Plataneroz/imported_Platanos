@@ -8,6 +8,6 @@ public class EnemyDeath : Simulation.Event<EnemyDeath>
     public GameObject enemy;
     public override void Execute()
     {
-        enemy.SetActive(true) ;
+        enemy.SetActive(false) ;
     }
     }

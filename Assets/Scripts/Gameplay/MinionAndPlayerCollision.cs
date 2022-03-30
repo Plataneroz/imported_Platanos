@@ -6,7 +6,7 @@ using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
 namespace Platformer.Gameplay
 {  
-    public class BossAndPlayerCollision : Simulation.Event<BossAndPlayerCollision>
+    public class MinionAndPlayerCollision : Simulation.Event<MinionAndPlayerCollision>
     {
         public PlayerController player;
         // St art is called before the first frame update

@@ -39,7 +39,7 @@ namespace Platformer.Mechanics
                 {
                     player.playerRestTime.CantHurtPlayer();
                     player.health.Decrement();
-                    player.Bounce(10);
+                    //player.Bounce(3);
                     if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
                     else
                     {
@@ -62,6 +62,14 @@ namespace Platformer.Mechanics
                  eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
                     Destroy(gameObject, .5f);
                 }
+
+                else if (collision.collider.tag == "Minion")
+                {
+                    var mionNBossColliding = Schedule<EggAndMionionCollision>();
+                    mionNBossColliding.minionComponets = collision.gameObject.GetComponent<MinionComponets>();
+                    Destroy(gameObject, .5f);
+                }
+
             }    
         }
      

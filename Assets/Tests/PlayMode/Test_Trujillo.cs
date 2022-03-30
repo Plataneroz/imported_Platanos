@@ -9,7 +9,7 @@ using Platformer.Gameplay;
 
 public class Test_Trujillo
 {
-    float determinedSpeed;
+  /*  float determinedSpeed;
     GameObject trujillo;
     Trujillo trujilloWithComponent;
     GameObject playerobj;
@@ -77,5 +77,5 @@ public class Test_Trujillo
         Assert.AreEqual(trujilloWithComponent.xOffset, playerTransform.position.x - 7, "Trujillo's is xoffset is not being set to negative 7");
     }
 
-
+    */
 }

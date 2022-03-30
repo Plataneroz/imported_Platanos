@@ -28,23 +28,28 @@ namespace Platformer.Gameplay
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Debug.Log(collision.collider.tag);
+            
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                
+
                 player.health.Decrement();
                 if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
                 else
                 {
                     StartCoroutine(player.spriteEffects.Blink());
                     player.lifeBar.ChangeSprite();
-                    Destroy(gameObject,.5f);
+                    Destroy(gameObject, .5f);
                 }
 
-                
+
             }
-            Destroy(gameObject,3);
+            else if
+
+                (collision.gameObject.tag =="Ground"){
+                Destroy(gameObject);
+            }
+            
         }
     }
 }

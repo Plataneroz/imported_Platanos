@@ -22,19 +22,19 @@ namespace Platformer.Gameplay
                 {
                     //Schedule<EnemyDeath>().trujilloComponents = trujilloComponents;
                 }
-                else if (trujilloComponents.health.GetCurrentHP() == 1)
+                else if (trujilloComponents.health.GetCurrentHP() == 4)
                 {
                     trujilloComponents.activiatePhase.Three();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseThree();
                 }
 
-                else if (trujilloComponents.health.GetCurrentHP() == 5)
+                else if (trujilloComponents.health.GetCurrentHP() == 7)
                 {
                     trujilloComponents.activiatePhase.Two();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseTwo();
                 }
 
-                else if (trujilloComponents.health.GetCurrentHP() == 7)
+                else if (trujilloComponents.health.GetCurrentHP() == 9)
                 {
 
                     // call trujillo

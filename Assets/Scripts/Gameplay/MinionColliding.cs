@@ -5,16 +5,16 @@ using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
 namespace Platformer.Gameplay
 {
-    public class BossAndPlayerCollide : MonoBehaviour
+    public class MinionColliding : MonoBehaviour
     {
         public float xOffset = 2;
         public float yOffset = 3;
-        Health health;
-        SpriteEffects spriteEffects;
+        MinionComponets minionComponets;
+        
+
         private void Start()
         {
-            health = GetComponent<Health>();
-            spriteEffects = GetComponent<SpriteEffects>();
+            minionComponets = GetComponent<MinionComponets>();
         }
         // Start is called before the first frame update
         void OnCollisionEnter2D(Collision2D collision)
@@ -22,13 +22,16 @@ namespace Platformer.Gameplay
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                var bossAndPlayerCollision = Schedule<BossAndPlayerCollision>();
-                bossAndPlayerCollision.player = player;
+                var minionAndPlayerCollision = Schedule<MinionAndPlayerCollision>();
+                minionAndPlayerCollision.player = player;
             }
-            else if (collision.gameObject.tag =="pickUpObj") {
 
-                Schedule<EggAndTrujilloCollision>();
- }
+            /* else if (collision.gameObject.tag =="pickUpObj")
+             {
+               var eggAndMionionCollision = Schedule<EggAndMionionCollision>();
+                 eggAndMionionCollision.minionComponets = minionComponets;
+             }*/
+
         }
 
     }
