@@ -40,7 +40,7 @@ namespace Platformer.Mechanics
         {
  
                 ColliderRigidBod.isKinematic = true;
-                pickedUpObjTrans.SetParent(transform.GetChild(0), false);
+                pickedUpObjTrans.SetParent(transform.GetChild(0), true);
                 pickedUpObjTrans.localPosition = new Vector3(.05f, .05f, 0);
                 pickedUpObjCapCollider.isTrigger = true;
             

@@ -15,7 +15,7 @@ namespace Platformer.Gameplay
             if(minionComponets != null)
             {
                 minionComponets.health.Decrement();
-                minionComponets.spriteEffects.Blink();
+                minionComponets.spriteEffects.StartToBlink();
                 if(minionComponets.health.GetCurrentHP() <= 0)
                 {
                     minionComponets.health.Die();

@@ -7,8 +7,7 @@ namespace Platformer.Gameplay
 {
     public class MinionColliding : MonoBehaviour
     {
-        public float xOffset = 2;
-        public float yOffset = 3;
+
         MinionComponets minionComponets;
         
 
@@ -26,11 +25,7 @@ namespace Platformer.Gameplay
                 minionAndPlayerCollision.player = player;
             }
 
-            /* else if (collision.gameObject.tag =="pickUpObj")
-             {
-               var eggAndMionionCollision = Schedule<EggAndMionionCollision>();
-                 eggAndMionionCollision.minionComponets = minionComponets;
-             }*/
+
 
         }
 

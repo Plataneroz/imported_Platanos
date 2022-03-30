@@ -14,7 +14,13 @@ namespace Platformer.Mechanics
         Sprite[] spriteArray;
      
         int currentSprite;
-
+        Color defaultColor;
+        private void Start()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            defaultColor = spriteRenderer.color;
+        }
+     
 
         public void ChangeSprite()
         {
@@ -36,11 +42,11 @@ namespace Platformer.Mechanics
         public IEnumerator Blink()
         {
            
-            Color defaultColor = spriteRenderer.color;
+            
 
             spriteRenderer.color = new Color(1, 0, 0, .5f);
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
 
             spriteRenderer.color = defaultColor;
 

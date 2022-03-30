@@ -53,21 +53,21 @@ namespace Platformer.Mechanics
             else if (gameObject.layer == 7)
             {
                 if (collision.collider.tag == "Ground" )
-                { Destroy(gameObject, .5f); }
+                { Destroy(gameObject, .01f); }
 
 
                 else if (collision.collider.tag == "Boss")
                 {
                  var eggNBossColliding = Schedule<EggAndTrujilloCollision>();
                  eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
-                    Destroy(gameObject, .5f);
+                    Destroy(gameObject, .01f);
                 }
 
                 else if (collision.collider.tag == "Minion")
                 {
                     var mionNBossColliding = Schedule<EggAndMionionCollision>();
                     mionNBossColliding.minionComponets = collision.gameObject.GetComponent<MinionComponets>();
-                    Destroy(gameObject, .5f);
+                    Destroy(gameObject, .01f);
                 }
 
             }    
