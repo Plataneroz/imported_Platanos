@@ -20,7 +20,7 @@ namespace Platformer.Gameplay
 
             var endPoint = new Vector3(farEnd.position.x, transform.position.y, transform.position.z);
             untoeth = endPoint;
-           // spriteRen = GetComponent<SpriteRenderer>();
+           spriteRen = GetComponent<SpriteRenderer>();
 
         }
 
