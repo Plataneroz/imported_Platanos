@@ -13,6 +13,7 @@ TagManager:
   - Lwall
   - Rwall
   - Minion
+  - Kart
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - wall
   - Projectile
   - escort
-  - 
+  - Kart
   - 
   - 
   - 

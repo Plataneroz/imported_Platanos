@@ -6,6 +6,7 @@ using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
 
+
 using UnityEngine.InputSystem;
 
 namespace Platformer.Mechanics
@@ -16,6 +17,7 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
+       
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
@@ -63,7 +65,7 @@ namespace Platformer.Mechanics
 
         void Awake()
         {
-  
+           
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<BoxCollider2D>();
@@ -77,6 +79,8 @@ namespace Platformer.Mechanics
             playerRestTime = GetComponent<PlayerRestTime>();
 
         }
+
+
 
         protected override void Update()
         {

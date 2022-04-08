@@ -10,27 +10,31 @@ namespace Platformer.Mechanics
         /// A simple controller for enemies. Provides movement control over a patrol path.Gr</summary>
         /// player should be able to pick diff objs that
         /// have diff attacks
-        public class Grab : MonoBehaviour
-        {
-
-       
+        public class HandleObj : MonoBehaviour
+        {    
         public Transform pickedUpObjTrans;
         public Rigidbody2D ColliderRigidBod;
         public CapsuleCollider2D pickedUpObjCapCollider;
-        //public  SpriteRenderer sprite;
-        public GameObject currentColliderGameObj;
+        public CapsuleCollider2D playerCCCollider;
+        private void Start()
+        {
+         playerCCCollider = GetComponent<CapsuleCollider2D>();
+
+        }
+    //public  SpriteRenderer sprite;
+    public GameObject currentColliderGameObj;
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            
+            if (!playerCCCollider.enabled) return;
             if (collision.tag == "unhackedEgg" && ColliderRigidBod == null)
             {
+                Debug.Log(gameObject.tag);
                 currentColliderGameObj = collision.gameObject;
                 collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
                 pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
                 ColliderRigidBod = collision.attachedRigidbody;
-                pickedUpObjTrans = collision.transform;
-                
+                pickedUpObjTrans = collision.transform; 
                 FollowingPlayer();
 
             }
@@ -52,7 +56,6 @@ namespace Platformer.Mechanics
             if (ColliderRigidBod != null)
             {
                 ColliderRigidBod.isKinematic = false;
-                
                 pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
                 ColliderRigidBod = null;

@@ -18,11 +18,8 @@ namespace Platformer.Gameplay
             {
                 trujilloComponents.health.Decrement();
                 trujilloComponents.spriteEffects.StartToBlink();
-                if (!trujilloComponents.health.IsAlive)
-                {
-                    //Schedule<EnemyDeath>().trujilloComponents = trujilloComponents;
-                }
-                else if (trujilloComponents.health.GetCurrentHP() == 4)
+                
+                 if (trujilloComponents.health.GetCurrentHP() == 4)
                 {
                     trujilloComponents.activiatePhase.Three();
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseThree();
@@ -42,14 +39,10 @@ namespace Platformer.Gameplay
                     trujilloComponents.trujilloAnimatorController.AnimatePhaseOne();
 
                 }
-                //else if (trujilloComponents.health.GetCurrentHP() <= 9)
-                //{ trujilloComponents.spriteEffects.ChangeSprite(); }
+
 
             }
-            else
-            {
-                // Schedule<EnemyDeath>().trujilloComponents = trujilloComponents;
-            }
+
         }
 
         

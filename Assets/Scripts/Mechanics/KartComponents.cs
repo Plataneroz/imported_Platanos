@@ -1,19 +1,22 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Platformer.Gameplay;
 namespace Platformer.Mechanics
 {
-    public class MinionComponets : MonoBehaviour
+
+    public class KartComponents : MonoBehaviour
     {
-        public Health health; 
+        public KartStatus kartStatus;
+        public ActiviatePhase activiatePhase;
         public SpriteEffects spriteEffects;
         // public TrujilloKartActions trujilloKartActions;
 
         void Start()
         {
             spriteEffects = GetComponent<SpriteEffects>();
-            health = GetComponent<Health>();
+            kartStatus = GetComponent<KartStatus>();
+             activiatePhase = GetComponent<ActiviatePhase>();
+            
         }
     }
 }

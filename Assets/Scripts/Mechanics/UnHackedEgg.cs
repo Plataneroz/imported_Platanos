@@ -70,6 +70,13 @@ namespace Platformer.Mechanics
                     Destroy(gameObject, .01f);
                 }
 
+                else if (collision.collider.tag == "Kart")
+                {
+                    var eggAndKartCollision = Schedule<EggAndKartCollision>();
+                    eggAndKartCollision.kartComponents = collision.gameObject.GetComponent<KartComponents>();
+                    Destroy(gameObject, .01f);
+                }
+
             }    
         }
      
