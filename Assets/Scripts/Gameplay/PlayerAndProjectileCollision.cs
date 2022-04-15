@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Platformer.Core;
 using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
 namespace Platformer.Gameplay
-{  
-    public class MinionAndPlayerCollision : Simulation.Event<MinionAndPlayerCollision>
+{
+    public class PlayerAndProjectileCollision : Simulation.Event<MinionAndPlayerCollision>
     {
         public PlayerController player;
         // St art is called before the first frame update
@@ -18,13 +16,13 @@ namespace Platformer.Gameplay
             if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
             else
             {
-                
-               // player.Teleport(new Vector3(player.transform.position.x ,
-                 //      player.transform.position.y + 2, 0));
+
+                // player.Teleport(new Vector3(player.transform.position.x ,
+                //      player.transform.position.y + 2, 0));
                 player.spriteEffects.StartToBlink();
-               // player.lifeBar.ChangeSprite();
+              //  player.lifeBar.ChangeSprite();
             }
             //
         }
     }
-  }
+}

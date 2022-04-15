@@ -8,24 +8,27 @@ namespace Platformer.Mechanics
     public class UnHackedEgg : MonoBehaviour
     {
         public SpriteRenderer spriteRenderer;
-        float Timer= 4 ;
-         public  bool harmFull = true;
+        float Timer = 4;
+        public bool harmFull = true;
         Rigidbody2D rigidBod;
         private IEnumerator coroutine;
         public int coroutineCounter;
         public float speedLimit = 12;
         public float launchAngleLimit = 70;
         public float forHowLongIsItDangerous = 6;
-        float random; 
+        float random;
+        bool explode;
+        Explosion explosion;
         // Start is called before the first frame update
         void Start()
         {
+            //explosion = GetComponent<Explosion>();
             coroutine = WaitForActions(Random.Range(1, forHowLongIsItDangerous));
             StartCoroutine(coroutine);
             rigidBod = GetComponent<Rigidbody2D>();
             transform.eulerAngles = new Vector3(0, 0, Random.Range(30, launchAngleLimit));
             rigidBod.velocity = transform.right * Random.Range(8, speedLimit);
-            
+
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.color = Color.red;
 
@@ -33,33 +36,39 @@ namespace Platformer.Mechanics
         void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null & harmFull )
+            if (player != null & harmFull)
             {
                 if (player.playerRestTime.canHarmPlayer)
                 {
-                    player.playerRestTime.CantHurtPlayer();
+                   // Rigidbody2D rb = collision.rigidbody;
+
+                  
+
+                     //   rb.AddForce(new Vector2(3, 3), ForceMode2D.Force);
+
+                     player.playerRestTime.CantHurtPlayer();
                     player.health.Decrement();
                     //player.Bounce(3);
                     if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
                     else
                     {
                         StartCoroutine(player.spriteEffects.Blink());
-                        player.lifeBar.ChangeSprite();
+                        //player.lifeBar.ChangeSprite();
                     }
-                    
+
                 }
-                
+
             }
             else if (gameObject.layer == 7)
             {
-                if (collision.collider.tag == "Ground" )
+                if (collision.collider.tag == "Ground")
                 { Destroy(gameObject, .01f); }
 
 
                 else if (collision.collider.tag == "Boss")
                 {
-                 var eggNBossColliding = Schedule<EggAndTrujilloCollision>();
-                 eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
+                    var eggNBossColliding = Schedule<EggAndTrujilloCollision>();
+                    eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
                     Destroy(gameObject, .01f);
                 }
 
@@ -77,25 +86,31 @@ namespace Platformer.Mechanics
                     Destroy(gameObject, .01f);
                 }
 
-            }    
+            }
         }
-     
+
 
 
         public IEnumerator WaitForActions(float waitTime)
         {
             while (true)
             {
-                yield return new WaitForSeconds(waitTime);
+                explode =! explode;
+             
+                yield return new WaitForSeconds(6);
+                explode = !explode;
                 ChangeColor();
                 NotHarmfull();
+                
+                
                 StopAllCoroutines();
 
             }
         }
 
-        
-        void HatchEgg() {
+
+        void HatchEgg()
+        {
             // hurt enemy when hatch
         }
 
@@ -108,19 +123,12 @@ namespace Platformer.Mechanics
 
         public void ChangeColor()
         {
-                if (spriteRenderer.color != Color.white)
-                {   
-                    spriteRenderer.color = Color.white;
-                    
-                }
+            if (spriteRenderer.color != Color.white)
+            {
+                spriteRenderer.color = Color.white;
+
+            }
         }
-        
-
-
-        
-
-
-
 
 
     }

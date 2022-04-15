@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-
+//[ExecuteAlways]
 public class SineWaveMovement : MonoBehaviour
 {
-
+   
 
     //[SerializeField]
-    float moveSpeed = 10f;
+    public  float moveSpeed = 10f;
     float pointToDisable = -10;
     [SerializeField]
-    float frequency = 20f;
+    public float frequency = 20f;
     [SerializeField]
     bool isMovingRight, isMovingLeft;
-    float magnitude = 0.5f;
+   public float magnitude = 0.5f;
 
     bool facingRight = true;
     float angle;
@@ -31,6 +32,7 @@ public class SineWaveMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       // EditorApplication.QueuePlayerLoopUpdate();
 
         if (isMovingRight)
         {

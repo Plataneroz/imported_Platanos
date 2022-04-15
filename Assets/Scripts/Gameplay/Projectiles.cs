@@ -33,12 +33,12 @@ namespace Platformer.Gameplay
             if (player != null)
             {
 
-                player.health.Decrement();
+               
                 if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
                 else
                 {
-                    StartCoroutine(player.spriteEffects.Blink());
-                    player.lifeBar.ChangeSprite();
+                   var col=  Schedule<PlayerAndProjectileCollision>();
+                    col.player = player;
                     Destroy(gameObject, .5f);
                 }
 

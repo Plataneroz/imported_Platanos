@@ -1,16 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace Platformer.Mechanics
 {
-
-    /// <summary>
-    /// Grab should be used on player  
-    /// A simple controller for enemies. Provides movement control over a patrol path.Gr</summary>
-    /// player should be able to pick diff objs that
-    /// have diff attacks
-    public class HandleObj : MonoBehaviour
+    public class HandlePickedUpObj : MonoBehaviour
     {
         public Transform pickedUpObjTrans;
         public Rigidbody2D ColliderRigidBod;
@@ -28,13 +22,8 @@ namespace Platformer.Mechanics
         {
             if (!playerCCCollider.enabled) return;
             if (collision.tag == "unhackedEgg" && ColliderRigidBod == null)
-            {   if(collision.transform.parent != null)
-                {
-                    collision.transform.root.GetComponent<HandleObj>().DropObj();
-                }
-                // collision.gameObject.transform.parent.gameObject
-
-               // Debug.Log(gameObject.tag);
+            {
+                Debug.Log(gameObject.tag);
                 currentColliderGameObj = collision.gameObject;
                 collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
                 pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
@@ -60,8 +49,8 @@ namespace Platformer.Mechanics
             //option to drop incase of dangerous 
             if (ColliderRigidBod != null)
             {
-                pickedUpObjCapCollider = null;
-                //playerCCCollider = null;
+                ColliderRigidBod.isKinematic = false;
+                pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
                 ColliderRigidBod = null;
             }
@@ -72,7 +61,7 @@ namespace Platformer.Mechanics
             if (ColliderRigidBod != null)
             {
 
-               // currentColliderGameObj.tag = "pickUpObj";
+                currentColliderGameObj.tag = "pickUpObj";
                 currentColliderGameObj.gameObject.layer = 7;
                 ColliderRigidBod.isKinematic = false;
                 //physic.ignoreCollision not working here
@@ -96,10 +85,5 @@ namespace Platformer.Mechanics
             pickedUpObjCapCollider.isTrigger = false;
 
         }
-
     }
-
-
-
-
 }

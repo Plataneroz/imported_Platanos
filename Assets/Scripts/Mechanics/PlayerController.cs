@@ -59,8 +59,8 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
-        Grab grab;
-
+        HandleObj grab;
+       // CustomeDevice customeDevice;
 
 
         void Awake()
@@ -75,7 +75,7 @@ namespace Platformer.Mechanics
             //animator = GetComponent<Animator>();
             capsuleCollider2D = GetComponent<CapsuleCollider2D>();
             capsuleCollider2D.enabled = false;
-            grab = GetComponent<Grab>();
+            grab = GetComponent<HandleObj>();
             playerRestTime = GetComponent<PlayerRestTime>();
 
         }
@@ -157,12 +157,7 @@ namespace Platformer.Mechanics
             else { capsuleCollider2D.enabled = false; }
         }
 
-       /* public void OnPush(InputAction.CallbackContext context)
-        {
-            // if (context.started) { grab.DropObj(); }
-            //dropStuff = !context.canceled ? true : false;
-        }
-       */
+
 
 
         public void OnDrop(InputAction.CallbackContext context)

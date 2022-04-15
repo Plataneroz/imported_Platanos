@@ -447,7 +447,7 @@ MonoBehaviour:
     m_ActionId: eb17357b-c8c3-4fa3-904b-77dabbeb352f
     m_ActionName: Player/Throw[/Keyboard/t]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -497,6 +497,7 @@ MonoBehaviour:
   pickedUpObjTrans: {fileID: 0}
   ColliderRigidBod: {fileID: 0}
   pickedUpObjCapCollider: {fileID: 0}
+  playerCCCollider: {fileID: 0}
   currentColliderGameObj: {fileID: 0}
 --- !u!114 &381995321231799873
 MonoBehaviour:

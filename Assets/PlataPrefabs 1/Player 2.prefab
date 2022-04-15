@@ -447,7 +447,7 @@ MonoBehaviour:
     m_ActionId: eb17357b-c8c3-4fa3-904b-77dabbeb352f
     m_ActionName: Player/Throw[/Keyboard/t]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -481,7 +481,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   gunAim: {fileID: 7291794726729505150}
-  cam: {fileID: 0}
 --- !u!114 &5496766786048549648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +496,7 @@ MonoBehaviour:
   pickedUpObjTrans: {fileID: 0}
   ColliderRigidBod: {fileID: 0}
   pickedUpObjCapCollider: {fileID: 0}
+  playerCCCollider: {fileID: 0}
   currentColliderGameObj: {fileID: 0}
 --- !u!114 &381995321231799873
 MonoBehaviour:
@@ -558,7 +558,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5540421873486278625}
-  m_LocalRotation: {x: -0, y: -0, z: 0.498357, w: 0.8669719}
+  m_LocalRotation: {x: -0, y: 0, z: -0.60699356, w: 0.79470676}
   m_LocalPosition: {x: -0.04, y: 0.159, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

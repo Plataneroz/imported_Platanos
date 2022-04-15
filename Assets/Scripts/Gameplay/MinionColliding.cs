@@ -15,9 +15,12 @@ namespace Platformer.Gameplay
         {
             minionComponets = GetComponent<MinionComponets>();
         }
+
+        
         // Start is called before the first frame update
-        void OnCollisionEnter2D(Collision2D collision)
+        void  OnTriggerEnter2D(Collider2D collision)
         {
+            if (!enabled) return;
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {

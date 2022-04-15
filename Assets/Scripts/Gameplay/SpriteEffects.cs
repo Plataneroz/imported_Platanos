@@ -22,12 +22,6 @@ namespace Platformer.Mechanics
         }
      
 
-        public void ChangeSprite()
-        {
-            spriteRenderer.sprite = spriteArray[currentSprite];
-            currentSprite++;
-
-        }
         
         public void FlipSprite()
         {

@@ -36,7 +36,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6334804377494453403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.200001, y: 11.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children:
   - {fileID: 6335990498504422112}
@@ -480,7 +480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   gunAim: {fileID: 6335990498504422112}
-  cam: {fileID: 0}
 --- !u!114 &6335990496695142201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +495,7 @@ MonoBehaviour:
   pickedUpObjTrans: {fileID: 0}
   ColliderRigidBod: {fileID: 0}
   pickedUpObjCapCollider: {fileID: 0}
+  playerCCCollider: {fileID: 0}
   currentColliderGameObj: {fileID: 0}
 --- !u!114 &6335990497392743751
 MonoBehaviour:
@@ -627,7 +627,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6335990498504422115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.021457558, w: 0.99976975}
   m_LocalPosition: {x: -0.04, y: 0.159, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

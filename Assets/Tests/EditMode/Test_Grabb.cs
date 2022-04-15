@@ -19,7 +19,7 @@ public class Test_Grab
         GameObject currentColliderGameObj;
         GameObject pickedUpObjCapColliderObj;
 
-        Grab grabWithComponent;
+        HandleObj grabWithComponent;
         Rigidbody2D addRigidComponent;
         CapsuleCollider2D addPickedUpCollider;
 
@@ -33,7 +33,7 @@ public class Test_Grab
             currentColliderGameObj = new GameObject();
             pickedUpObjCapColliderObj = new GameObject();
             child.transform.parent = grabsObj.transform;
-            grabWithComponent = grabsObj.AddComponent<Grab>();
+            grabWithComponent = grabsObj.AddComponent<HandleObj>();
             addRigidComponent = ColliderRigidBodBodObj.AddComponent<Rigidbody2D>();
             addPickedUpCollider = pickedUpObjCapColliderObj.AddComponent<CapsuleCollider2D>();
 

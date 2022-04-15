@@ -34,7 +34,7 @@ namespace Platformer.Gameplay
         }
        
 
-        void GetReadyToAttack() { spriteEffects.ChangeSprite(); }
+       // void GetReadyToAttack() { spriteEffects.ChangeSprite(); }
 
         public void MoveTowardsPlayer(float speed, float xOffset)
         {

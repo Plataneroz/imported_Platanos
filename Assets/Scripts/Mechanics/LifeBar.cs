@@ -20,10 +20,18 @@ namespace Platformer.Mechanics
 
         }
 
-        public void ChangeSprite()
+        public void DecreaseBar()
         {
             myIMGcomponent.sprite = spriteArray[currentSprite];
             currentSprite++;
+
+        }
+
+
+        public void IncreaseBar()
+        {
+            myIMGcomponent.sprite = spriteArray[currentSprite];
+            currentSprite--;
 
         }
     }
