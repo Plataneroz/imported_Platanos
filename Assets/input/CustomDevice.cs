@@ -99,7 +99,7 @@ namespace Platformer.Core
     public class CustomeDevice : Gamepad
     {
 
-        [MenuItem("Tools/Add CustomDevice")]
+//        [MenuItem("Tools/Add CustomDevice")]
         public static void Initialize()
         {
             InputSystem.AddDevice<CustomeDevice>();

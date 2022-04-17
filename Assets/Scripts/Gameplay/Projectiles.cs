@@ -34,7 +34,7 @@ namespace Platformer.Gameplay
             {
 
                
-                if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
+                if (!player.playerHealthComponents.IsAlive) { Schedule<PlayerDeath>(); }
                 else
                 {
                    var col=  Schedule<PlayerAndProjectileCollision>();

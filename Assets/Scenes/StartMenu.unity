@@ -163,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 342359572636396683, guid: 36abf7f367a314c3391660ebddd7d2ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 342359572636396687, guid: 36abf7f367a314c3391660ebddd7d2ef,
         type: 3}
@@ -1052,10 +1052,6 @@ MonoBehaviour:
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 04a8e1f5-25a4-45fd-93f1-54f05956f20b
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: ecddd080-121e-4208-b326-494042c30c23
     m_ActionName: UI/Point[/Mouse/position,/Pen/position]
   - m_PersistentCalls:
@@ -1082,7 +1078,19 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0885a51c-e4e0-489f-bfa8-b0ce4f194a89
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cd83c628-bb22-445e-853e-11c0939ce9a2
+    m_ActionName: UI/Pause[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 31ffc523-380a-455c-9a25-a92e4ff08b2f
+    m_ActionName: UI/Restart[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 22b64995-c68e-4980-bc34-a1838f7cafa4
+    m_ActionName: UI/Quit[/Keyboard/backspace]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1

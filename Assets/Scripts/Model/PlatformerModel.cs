@@ -22,6 +22,10 @@ namespace Platformer.Model
         /// </summary>
         public PlayerController player;
 
+        public PlayerController player2;
+
+
+
         /// <summary>
         /// The spawn point in the scene.
         /// </summary>

@@ -22,12 +22,12 @@ namespace Platformer.Gameplay
               
               
 
-               if (player.health.GetCurrentHP()  == 0)
+               if (player.playerHealthComponents.GetCurrentHP()  == 0)
               {
                   Schedule<PlayerDeath>();
               }
-              else if (player.health.GetCurrentHP() <= 3)
-              { player.health.Decrement(); }
+              else if (player.playerHealthComponents.GetCurrentHP() <= 3)
+              { player.playerHealthComponents.Decrease(); }
         }
     }
       

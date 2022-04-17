@@ -47,7 +47,7 @@ namespace Platformer.GamePlay
                 if (transform.position.y == finalTarget.position.y)
                 {
                     loading = true;
-                    startMenu.LoadingNextScene();
+                 StartCoroutine( startMenu.LoadNextAsyncScene(1));
                 }
             }
         }

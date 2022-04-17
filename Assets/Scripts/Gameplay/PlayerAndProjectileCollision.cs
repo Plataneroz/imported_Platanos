@@ -10,10 +10,10 @@ namespace Platformer.Gameplay
         // St art is called before the first frame update
         public override void Execute()
         {
-            player.health.Decrement();
+            player.playerHealthComponents.Decrease();
 
 
-            if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
+            if (!player.playerHealthComponents.IsAlive) { Schedule<PlayerDeath>(); }
             else
             {
 

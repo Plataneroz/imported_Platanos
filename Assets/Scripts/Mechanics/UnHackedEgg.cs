@@ -40,16 +40,18 @@ namespace Platformer.Mechanics
             {
                 if (player.playerRestTime.canHarmPlayer)
                 {
-                   // Rigidbody2D rb = collision.rigidbody;
+                    // Rigidbody2D rb = collision.rigidbody;
 
-                  
 
-                     //   rb.AddForce(new Vector2(3, 3), ForceMode2D.Force);
 
-                     player.playerRestTime.CantHurtPlayer();
-                    player.health.Decrement();
+                    //   rb.AddForce(new Vector2(3, 3), ForceMode2D.Force);
+                    player.playerHealthComponents.Decrease();
+                    player.playerRestTime.CantHurtPlayer();
+                    
                     //player.Bounce(3);
-                    if (!player.health.IsAlive) { Schedule<PlayerDeath>(); }
+                    if (!player.playerHealthComponents.IsAlive)
+                    { Schedule<PlayerDeath>(); //Debug.Log("you dead");
+                                               }
                     else
                     {
                         StartCoroutine(player.spriteEffects.Blink());

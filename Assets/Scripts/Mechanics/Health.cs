@@ -21,7 +21,7 @@ namespace Platformer.Mechanics
         public bool IsAlive => currentHP > 0;
 
         [SerializeField]
-        int currentHP;
+        protected int currentHP;
 
         /// <summary>
         /// Increment the HP of the entity.
@@ -40,6 +40,7 @@ namespace Platformer.Mechanics
             currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
             if (currentHP == 0)
             {
+                Debug.Log("zeroo");
                 var ev = Schedule<HealthIsZero>();
                 ev.health = this;
             }
