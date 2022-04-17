@@ -33,9 +33,9 @@ namespace Platformer.Mechanics
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public BoxCollider2D collider2d;
+        /*internal new*/ public BoxCollider2D boxCollider2d;
         /*internal new*/ public AudioSource audioSource;
-        CapsuleCollider2D capsuleCollider2D;
+        public CapsuleCollider2D capsuleCollider2D;
         public PlayerRestTime playerRestTime;
        // public Health health;
        // public LifeBar lifeBar;
@@ -59,7 +59,7 @@ namespace Platformer.Mechanics
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        public Bounds Bounds => collider2d.bounds;
+        public Bounds Bounds => boxCollider2d.bounds;
         HandleObj grab;
        // CustomeDevice customeDevice;
 
@@ -69,7 +69,7 @@ namespace Platformer.Mechanics
            
             playerHealthComponents = GetComponent<PlayerHealthComponents>();
             audioSource = GetComponent<AudioSource>();
-            collider2d = GetComponent<BoxCollider2D>();
+            boxCollider2d = GetComponent<BoxCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteEffects = GetComponent<SpriteEffects>();
             spriteEffects.spriteRenderer = spriteRenderer;

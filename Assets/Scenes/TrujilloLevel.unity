@@ -118317,6 +118317,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1653656399568720153, guid: 01c1cf571e1f747d6ab17ad2f2342e90,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.1317922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653656399568720153, guid: 01c1cf571e1f747d6ab17ad2f2342e90,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.044680297
+      objectReference: {fileID: 0}
     - target: {fileID: 5851139206609636163, guid: 01c1cf571e1f747d6ab17ad2f2342e90,
         type: 3}
       propertyPath: lifeBar
