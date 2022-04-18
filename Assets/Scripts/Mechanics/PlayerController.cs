@@ -8,6 +8,7 @@ using Platformer.Core;
 
 
 using UnityEngine.InputSystem;
+using Platformer.GamePlay;
 
 namespace Platformer.Mechanics
 {
@@ -55,18 +56,19 @@ namespace Platformer.Mechanics
 
         int grabCount;
         public SpriteEffects spriteEffects;
-        SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-
+     
         public Bounds Bounds => boxCollider2d.bounds;
         HandleObj grab;
-       // CustomeDevice customeDevice;
-
+        // CustomeDevice customeDevice;
+        public BananaPeal bananaPeal;
 
         void Awake()
         {
-           
+            bananaPeal = GetComponent<BananaPeal>();
+            bananaPeal.enabled = false;
             playerHealthComponents = GetComponent<PlayerHealthComponents>();
             audioSource = GetComponent<AudioSource>();
             boxCollider2d = GetComponent<BoxCollider2D>();

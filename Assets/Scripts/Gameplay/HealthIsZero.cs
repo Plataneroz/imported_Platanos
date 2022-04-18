@@ -1,4 +1,5 @@
 using Platformer.Core;
+using Platformer.GamePlay;
 using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
 
@@ -12,11 +13,17 @@ namespace Platformer.Gameplay
     public class HealthIsZero : Simulation.Event<HealthIsZero>
     {
         public Health health;
-
+       // public PlayerController playerController;
         public override void Execute()
         {
-            if(health.gameObject.tag =="Player")
-               Schedule<PlayerDeath>();
+            var plyr = health.GetComponent<PlayerController>();
+            if (plyr != null)
+            {
+                plyr.bananaPeal.enabled = true;
+
+            }
+            else if (health.gameObject.tag == "Kart")
+            { Schedule<PlayerDeath>(); }
             else
             {
                 var villian =Schedule<EnemyDeath>();

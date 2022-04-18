@@ -2,7 +2,9 @@
 using UnityEngine;
 using Platformer.Mechanics;
 using System.Collections;
-
+using UnityEngine.InputSystem;
+using Platformer.Gameplay;
+using static Platformer.Core.Simulation;
 namespace Platformer.GamePlay
 {
     public class BananaPeal : MonoBehaviour
@@ -12,48 +14,66 @@ namespace Platformer.GamePlay
         PlayerController playerController;
         GameObject aim;
         public Sprite[] playerSprites;
-
-
-        private void Start()
+        PlayerInput playerInput;
+        float colorCount = 1;
+        private void OnEnable()
         {
             playerController = GetComponent<PlayerController>();
             playerController.controlEnabled = false;
-            // spriteEffects = GetComponent<SpriteEffects>();
-            spriteRender.sprite = playerSprites[0];
+            playerInput = GetComponent<PlayerInput>();
+            playerInput.DeactivateInput();
+            playerController.gameObject.tag = "peal";
+            playerController.gameObject.layer = 15;
+
+            playerController.spriteRenderer.sprite = playerSprites[0];
             playerController.boxCollider2d.size = new Vector2(.52f, .36f);
             aim = playerController.gameObject.transform.GetChild(0).gameObject ;
             aim.SetActive(false);
+            playerController.enabled = false;
             StartCoroutine(Rot());
         }
 
-        void RevivePlatano()
+        public void RevivePlatano()
         {
-            playerController.controlEnabled = true;
+            // set position 
+             playerController.controlEnabled = true;
             playerController.boxCollider2d.size = new Vector2(.52f, 1.131792f);
-            spriteRender.sprite = playerSprites[1];
+            playerController.capsuleCollider2D.enabled = true;
+            playerController.spriteRenderer.sprite = playerSprites[1];
+            playerController.playerHealthComponents.Increase();
             aim.SetActive(true);
+            playerInput.enabled = true;
+            enabled = false;
+
         }
-        private void Update()
-        {
-            
-        }
+
         public IEnumerator Rot()
         {
-            float alphaVal = spriteRender.color.a;
-            Color tmp = spriteRender.color;
-
-            while (spriteRender.color.a < 1)
-            { FadeColor(alphaVal, tmp);
+            float alphaVal = playerController.spriteRenderer.color.a;
+            Color tmp = playerController.spriteRenderer.color;
+            //Debug.Log("this is g " + playerController.spriteRenderer.color);
+            
+            while (colorCount >= 0
+                && playerController.playerHealthComponents.GetCurrentHP() == 0)
+            {
+                
                 yield return new WaitForSeconds(1f); // update interval
+                DarkenColor(tmp);
             }
-             
-
+            if (colorCount >= 0)
+               {
+                playerController.gameObject.SetActive(false);
+                //Schedule<PlayerDeath>();
+                } 
         }
-        void FadeColor(float alphaVal, Color tmp)
+        void DarkenColor( Color tmp)
         {
-            alphaVal += 0.25f;
-            tmp.a = alphaVal;
-            spriteRender.color = tmp;
+
+            //Solid white. RGBA is (1, 1, 1, 1).
+            // Solid black. RGBA is (0, 0, 0, 1).
+            Debug.Log("this is g " + playerController.spriteRenderer.color);
+            colorCount -= .2f;
+            playerController.spriteRenderer.color = new Color(colorCount,colorCount,colorCount) ;
         }
 
     }
