@@ -829,6 +829,17 @@ public class @InputConnection : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3a3cf0ec-d609-4fb1-a7c0-8d631c8f650e"",
+                    ""path"": ""<CustomeDevice>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59f9da83-6f8a-4568-8d71-8cbce67c9cfd"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",

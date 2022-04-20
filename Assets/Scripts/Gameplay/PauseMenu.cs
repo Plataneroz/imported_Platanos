@@ -15,16 +15,7 @@ public class PauseMenu : MonoBehaviour
         //pauseMenuUI.SetActive(false);
            sceneLoading = GetComponent<SceneLoading>();
     }
-  /*  void Update()
-    {
-        if (GameisPaused)
-        { Pause(); ; }
-        else
-        {
-            Resume();
-        }
-    }
-  */
+
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
@@ -54,14 +45,14 @@ public class PauseMenu : MonoBehaviour
 
     public void OnRestart(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (context.canceled && GameisPaused)
         { sceneLoading.RestartScene();  }
     }
 
 
     public void OnQuit(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (context.canceled && GameisPaused)
         {
             Debug.Log("Quit");
             Application.Quit();

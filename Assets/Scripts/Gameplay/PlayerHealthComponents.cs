@@ -8,8 +8,9 @@ namespace Platformer.Mechanics
         public LifeBar lifeBar;
         private void Start()
         {
-            ResetHP();
-            
+             maxHP = 3;
+            currentHP = 3;
+
         }
         public void Decrease()
         {
@@ -24,8 +25,8 @@ namespace Platformer.Mechanics
 
         public void ResetHP()
         {
-            maxHP = 3;
-            currentHP = 3;
+            maxHP = 1;
+            currentHP = 1;
         }
     }
 }

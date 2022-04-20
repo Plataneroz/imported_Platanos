@@ -12,7 +12,7 @@ namespace Platformer.Gameplay
         public float speedLimit = 4;
         public float launchAngleLimit = -160;
         public float forHowLongIsItDangerous = 6;
-
+        public PlayerHealthComponents playerHealthComponents;
         // Start is called before the first frame update
         void Start()
         {
@@ -29,16 +29,17 @@ namespace Platformer.Gameplay
         private void OnCollisionEnter2D(Collision2D collision)
         {
             
-            var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null)
+             if (collision.gameObject.tag == "player")
             {
+                var playerHealthComponents = collision.gameObject.GetComponent<PlayerHealthComponents>();
+                var spriteEffects = collision.gameObject.GetComponent<SpriteEffects>();
 
-               
-                if (!player.playerHealthComponents.IsAlive) { Schedule<PlayerDeath>(); }
+                if (!playerHealthComponents.IsAlive) { Schedule<PlayerDeath>(); }
                 else
                 {
                    var col=  Schedule<PlayerAndProjectileCollision>();
-                    col.player = player;
+                    col.playerHealthComponents = playerHealthComponents;
+                    col.spriteEffects = spriteEffects;
                     Destroy(gameObject, .5f);
                 }
 

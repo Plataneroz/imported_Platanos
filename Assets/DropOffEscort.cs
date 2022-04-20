@@ -26,6 +26,7 @@ public class DropOffEscort : MonoBehaviour
         {
             player.SetActive(true);
             player.transform.parent = null;
+            
             dropedPlayer = true;
         }
         else 

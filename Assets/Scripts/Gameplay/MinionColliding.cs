@@ -21,11 +21,14 @@ namespace Platformer.Gameplay
         void  OnTriggerEnter2D(Collider2D collision)
         {
             if (!enabled) return;
-            var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null)
+            
+            if (collision.gameObject.tag == "player")
             {
+                var playerHealthComponent = collision.gameObject.GetComponent<PlayerHealthComponents>();
+                var spriteEffects = collision.gameObject.GetComponent<SpriteEffects>();
                 var minionAndPlayerCollision = Schedule<MinionAndPlayerCollision>();
-                minionAndPlayerCollision.player = player;
+                minionAndPlayerCollision.playerHealthComponents = playerHealthComponent;
+                minionAndPlayerCollision.spriteEffects = spriteEffects;
             }
 
 

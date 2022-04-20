@@ -35,9 +35,11 @@ namespace Platformer.Mechanics
         }
         void OnCollisionEnter2D(Collision2D collision)
         {
-            var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null & harmFull)
+            //var player = collision.gameObject.GetComponent<PlayerController>();
+            if (collision.transform.tag == "Player" & harmFull)
             {
+                var player = collision.gameObject.GetComponent<PlayerController>();
+                var healthComponents = collision.gameObject.GetComponent<PlayerHealthComponents>();
                 if (player.playerRestTime.canHarmPlayer)
                 {
                     // Rigidbody2D rb = collision.rigidbody;
@@ -45,11 +47,11 @@ namespace Platformer.Mechanics
 
 
                     //   rb.AddForce(new Vector2(3, 3), ForceMode2D.Force);
-                    player.playerHealthComponents.Decrease();
+                    healthComponents.Decrease();
                     player.playerRestTime.CantHurtPlayer();
                     
                     //player.Bounce(3);
-                    if (!player.playerHealthComponents.IsAlive)
+                    if (!healthComponents.IsAlive)
                     { Schedule<PlayerDeath>(); //Debug.Log("you dead");
                                                }
                     else

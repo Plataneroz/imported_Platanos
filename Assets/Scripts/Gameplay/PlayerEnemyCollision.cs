@@ -20,7 +20,7 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
               
-              
+              /*
 
                if (player.playerHealthComponents.GetCurrentHP()  == 0)
               {
@@ -28,6 +28,7 @@ namespace Platformer.Gameplay
               }
               else if (player.playerHealthComponents.GetCurrentHP() <= 3)
               { player.playerHealthComponents.Decrease(); }
+              */
         }
     }
       

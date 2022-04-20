@@ -12,10 +12,13 @@ namespace Platformer.Mechanics
     /// have diff attacks
     public class HandleObj : MonoBehaviour
     {
-        public Transform pickedUpObjTrans;
-        public Rigidbody2D ColliderRigidBod;
-        public CapsuleCollider2D pickedUpObjCapCollider;
-        public CapsuleCollider2D playerCCCollider;
+         public Transform pickedUpObjTrans;
+         public Rigidbody2D ColliderRigidBod;
+         public CapsuleCollider2D pickedUpObjCapCollider;
+         public CapsuleCollider2D playerCCCollider;
+         public BoxCollider2D palyerBoxCollider;
+         public PlayerController playerController;
+
         private void Start()
         {
             playerCCCollider = GetComponent<CapsuleCollider2D>();
@@ -33,18 +36,38 @@ namespace Platformer.Mechanics
                     collision.transform.root.GetComponent<HandleObj>().DropObj();
                 }
                 // collision.gameObject.transform.parent.gameObject
+                Grab(collision);
 
-               // Debug.Log(gameObject.tag);
-                currentColliderGameObj = collision.gameObject;
-                collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
-                pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
-                ColliderRigidBod = collision.attachedRigidbody;
-                pickedUpObjTrans = collision.transform;
-                FollowingPlayer();
 
+            }
+            else if (collision.tag == "peal")
+            {
+                Grab(collision);
             }
         }
 
+        public void SetAllCollidersStatus(bool active)
+        {
+            foreach (Collider c in GetComponents<Collider>())
+            {
+                c.enabled = active;
+            }
+        }
+        public void Grab(Collider2D collision)
+        {
+            Debug.Log(collision.gameObject.tag);
+            currentColliderGameObj = collision.gameObject;
+            collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
+            if (currentColliderGameObj.tag == "peal")
+            { palyerBoxCollider = collision.GetComponent<BoxCollider2D>();
+              palyerBoxCollider.isTrigger = true;
+              playerController = collision.GetComponent<PlayerController>();  
+            }
+            pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
+            ColliderRigidBod = collision.attachedRigidbody;
+            pickedUpObjTrans = collision.transform;
+            FollowingPlayer();
+        }
         public void FollowingPlayer()
         {
 
@@ -84,6 +107,15 @@ namespace Platformer.Mechanics
                 pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
                 ColliderRigidBod = null;
+                if (playerController != null) {
+
+                    Debug.Log("Thrwoing it ");
+                    palyerBoxCollider.isTrigger = false;
+                    playerController.bananaPeal.RevivePlatano();
+                   // playerController.playerHealthComponents.Increase();
+                    playerController = null;
+                    palyerBoxCollider = null;
+                }
             }
 
 
@@ -94,7 +126,8 @@ namespace Platformer.Mechanics
 
             yield return new WaitForSeconds(0.05f);
             pickedUpObjCapCollider.isTrigger = false;
-
+           // playerCCCollider.isTrigger = false;
+ 
         }
 
     }

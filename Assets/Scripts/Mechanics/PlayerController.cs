@@ -40,7 +40,7 @@ namespace Platformer.Mechanics
         public PlayerRestTime playerRestTime;
        // public Health health;
        // public LifeBar lifeBar;
-        public PlayerHealthComponents playerHealthComponents;
+        //public PlayerHealthComponents playerHealthComponents;
         public bool controlEnabled = true;
 
         bool jumpancelled;
@@ -69,7 +69,7 @@ namespace Platformer.Mechanics
         {
             bananaPeal = GetComponent<BananaPeal>();
             bananaPeal.enabled = false;
-            playerHealthComponents = GetComponent<PlayerHealthComponents>();
+            //playerHealthComponents = GetComponent<PlayerHealthComponents>();
             audioSource = GetComponent<AudioSource>();
             boxCollider2d = GetComponent<BoxCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
