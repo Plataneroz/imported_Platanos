@@ -94,28 +94,37 @@ namespace Platformer.Mechanics
         {
             if (ColliderRigidBod != null)
             {
-
+                var colVelocity = transform.GetChild(0).transform.right * distance;
                // currentColliderGameObj.tag = "pickUpObj";
                 currentColliderGameObj.gameObject.layer = 7;
                 ColliderRigidBod.isKinematic = false;
+                
                 //physic.ignoreCollision not working here
                 StartCoroutine(ChangeTriggerToFalse());
                 //pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.position = transform.GetChild(0).position;
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
-                ColliderRigidBod.velocity = transform.GetChild(0).transform.right * distance;
-                pickedUpObjTrans.parent = null;
-                pickedUpObjTrans = null;
-                ColliderRigidBod = null;
-                if (playerController != null) {
+                ColliderRigidBod.velocity = colVelocity;//transform.GetChild(0).transform.right * distance;
+                if (playerController != null)
+                {
 
-                    Debug.Log("Thrwoing it ");
+
                     palyerBoxCollider.isTrigger = false;
                     playerController.bananaPeal.RevivePlatano();
-                   // playerController.playerHealthComponents.Increase();
-                    playerController = null;
-                    palyerBoxCollider = null;
+                    //Debug.Log(ColliderRigidBod.velocity);
+                    StartCoroutine(ResetPlayer(colVelocity));
+                    // playerController.playerHealthComponents.Increase();
+
                 }
+                else
+                {
+                    ColliderRigidBod = null;
+                }
+                pickedUpObjTrans.parent = null;
+                pickedUpObjTrans = null;
+                
+ 
+               
             }
 
 
@@ -128,6 +137,46 @@ namespace Platformer.Mechanics
             pickedUpObjCapCollider.isTrigger = false;
            // playerCCCollider.isTrigger = false;
  
+        }
+
+
+        public IEnumerator ResetPlayer(Vector2 velocity)
+        {
+
+            /* var xV = velocity.x;
+             var targetX = velocity.x >
+                 0 ? velocity.x * -1 : Mathf.Abs(velocity.x);
+             var calX = targetX > 0 ? -2 : 2;
+
+
+
+             var yV = velocity.y;
+             var targetY = velocity.y >
+                 0 ? velocity.y * -1 : Mathf.Abs(velocity.y);
+             var calY = targetY > 0 ? -2 : 2;
+
+
+                  //targetX >= xV
+             while (targetX <= xV)
+             {
+
+
+             }*/
+            playerController.body.isKinematic = false;
+            playerController.body.bodyType = RigidbodyType2D.Dynamic;
+            yield return new WaitForSeconds(2f);
+
+            playerController.transform.eulerAngles = new Vector3(0, 0, 0);
+            //playerController.velocity = new Vector2(0, 0);
+
+
+             //ColliderRigidBod.velocity = new Vector2(0,0);
+
+            palyerBoxCollider = null;
+            yield return new WaitForSeconds(1f);
+            playerController.body.isKinematic = true;
+            ColliderRigidBod = null;
+            playerController = null;
         }
 
     }
