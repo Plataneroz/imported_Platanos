@@ -24,7 +24,7 @@ namespace Platformer.Model
 
         public PlayerController player2;
 
-
+        public Menu menu;
 
         /// <summary>
         /// The spawn point in the scene.

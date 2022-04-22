@@ -4,16 +4,19 @@ using UnityEngine;
 using  Platformer.Core;
 using UnityEngine.InputSystem;
 
-public class PauseMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     // Start is called before the first frame update
     SceneLoading sceneLoading;
     public static bool GameisPaused = false;
+    public static bool GameIsOver = false;
     public GameObject pauseMenuUI;
+    public GameObject gameOver ;
     private void Start()
     {
-        //pauseMenuUI.SetActive(false);
-           sceneLoading = GetComponent<SceneLoading>();
+        pauseMenuUI.SetActive(false);
+        sceneLoading = GetComponent<SceneLoading>();
+        gameOver.SetActive(false); ;
     }
 
     public void Pause()
@@ -23,30 +26,29 @@ public class PauseMenu : MonoBehaviour
         GameisPaused = true;
     }
 
-    public void Resume()
+
+    
+    public  void GameOver()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameisPaused = false;
+        GameIsOver = true;
+        pauseMenuUI.SetActive(true); ;
+        gameOver.SetActive(true);
+        Pause();
     }
-
-    public void LoadMenu()
-    {
-
-    }
-
+ 
  
 
     public void OnStartScreen( InputAction.CallbackContext context)
     {
+        GameIsOver = false;
         sceneLoading.StartScreen();
         Resume();
     }
 
     public void OnRestart(InputAction.CallbackContext context)
     {
-        if (context.canceled && GameisPaused)
-        { sceneLoading.RestartScene();  }
+        if (context.canceled )
+        {  if(GameIsOver || GameisPaused)sceneLoading.RestartScene(); Time.timeScale = 1f; }
     }
 
 
@@ -54,6 +56,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (context.canceled && GameisPaused)
         {
+            
             Debug.Log("Quit");
             Application.Quit();
         }
@@ -61,12 +64,22 @@ public class PauseMenu : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (context.canceled && !GameIsOver)
         {
             GameisPaused = !GameisPaused;
             pauseMenuUI.SetActive(GameisPaused);
             Time.timeScale = GameisPaused? 0: 1;
         }
       
+    }
+
+    public void Resume()
+    {
+        if (!GameIsOver)
+        {
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+            GameisPaused = false;
+        }
     }
 }

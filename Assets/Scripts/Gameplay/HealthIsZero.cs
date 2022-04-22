@@ -20,10 +20,12 @@ namespace Platformer.Gameplay
             if (plyr != null)
             {
                 plyr.bananaPeal.enabled = true;
+                Schedule<PlayerDeath>();
 
             }
             else if (health.gameObject.tag == "Kart")
-            { Schedule<PlayerDeath>(); }
+            { //Schedule<PlayerDeath>();
+            }
             else
             {
                 var villian =Schedule<EnemyDeath>();

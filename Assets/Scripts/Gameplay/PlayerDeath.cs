@@ -13,15 +13,18 @@ namespace Platformer.Gameplay
     public class PlayerDeath : Simulation.Event<PlayerDeath>
     {
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-       
+        Menu menu;
         public override void Execute()
         {
-            /*
+            
             var player = model.player;
             var player2 = model.player2;
-            
-            
-            if (!player.playerHealthComponents.IsAlive )
+
+            if (player.tag =="peal" && player2.tag =="peal")
+            {
+                model.menu.GameOver();
+            }
+           /* if (!player.playerHealthComponents.IsAlive )
             {
                 player.playerHealthComponents.Die();
                /* model.virtualCamera.m_Follow = null;
