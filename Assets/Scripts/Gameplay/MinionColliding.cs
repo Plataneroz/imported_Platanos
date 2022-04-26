@@ -18,11 +18,11 @@ namespace Platformer.Gameplay
 
         
         // Start is called before the first frame update
-        void  OnTriggerEnter2D(Collider2D collision)
+        void OnCollisionEnter2D(Collision2D collision)
         {
             if (!enabled) return;
             
-            if (collision.gameObject.tag == "player")
+            if (collision.gameObject.tag == "Player")
             {
                 var playerHealthComponent = collision.gameObject.GetComponent<PlayerHealthComponents>();
                 var spriteEffects = collision.gameObject.GetComponent<SpriteEffects>();
@@ -30,8 +30,6 @@ namespace Platformer.Gameplay
                 minionAndPlayerCollision.playerHealthComponents = playerHealthComponent;
                 minionAndPlayerCollision.spriteEffects = spriteEffects;
             }
-
-
 
         }
 

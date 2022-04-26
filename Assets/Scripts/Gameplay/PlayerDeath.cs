@@ -20,8 +20,10 @@ namespace Platformer.Gameplay
             var player = model.player;
             var player2 = model.player2;
 
-            if (player.tag =="peal" && player2.tag =="peal")
+            if (!player.playerHealthComponents.IsAlive
+                && !player2.playerHealthComponents.IsAlive)
             {
+                
                 model.menu.GameOver();
             }
            /* if (!player.playerHealthComponents.IsAlive )
@@ -37,9 +39,6 @@ namespace Platformer.Gameplay
                      player.audioSource.PlayOneShot(player.ouchAudio);
                  player.animator.SetTrigger("hurt");
                  player.animator.SetBool("dead", true);
-                 
-
-
                     
             }
            else if (!player.playerHealthComponents.IsAlive

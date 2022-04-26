@@ -22,16 +22,26 @@ namespace Platformer.Mechanics
 
         public void DecreaseBar()
         {
-            myIMGcomponent.sprite = spriteArray[currentSprite];
-            currentSprite++;
+            if (currentSprite < 2)
+            {
+                myIMGcomponent.sprite = spriteArray[currentSprite];
+                currentSprite++;
+            }
 
         }
 
+       public void ResetBar()
+        {
+
+        }
 
         public void IncreaseBar()
-        {
-            myIMGcomponent.sprite = spriteArray[currentSprite];
-            currentSprite--;
+        {if (currentSprite > 0)
+            {
+                currentSprite--;
+                myIMGcomponent.sprite = spriteArray[currentSprite];
+            }
+           
 
         }
     }

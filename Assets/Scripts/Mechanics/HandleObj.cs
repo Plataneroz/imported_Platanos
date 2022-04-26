@@ -55,13 +55,14 @@ namespace Platformer.Mechanics
         }
         public void Grab(Collider2D collision)
         {
-            Debug.Log(collision.gameObject.tag);
+            
             currentColliderGameObj = collision.gameObject;
             collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
             if (currentColliderGameObj.tag == "peal")
             { palyerBoxCollider = collision.GetComponent<BoxCollider2D>();
               palyerBoxCollider.isTrigger = true;
-              playerController = collision.GetComponent<PlayerController>();  
+              playerController = collision.GetComponent<PlayerController>();
+                currentColliderGameObj.tag = "Player";
             }
             pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
             ColliderRigidBod = collision.attachedRigidbody;
@@ -99,21 +100,23 @@ namespace Platformer.Mechanics
                 currentColliderGameObj.gameObject.layer = 7;
                 ColliderRigidBod.isKinematic = false;
                 
-                //physic.ignoreCollision not working here
+             
                 StartCoroutine(ChangeTriggerToFalse());
                 //pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.position = transform.GetChild(0).position;
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
-                ColliderRigidBod.velocity = colVelocity;//transform.GetChild(0).transform.right * distance;
+                //ColliderRigidBod.velocity = colVelocity;//transform.GetChild(0).transform.right * distance;
+               ColliderRigidBod.AddForce(colVelocity, ForceMode2D.Impulse);
                 if (playerController != null)
                 {
 
+                    //playerController.jumpState = PlayerController.JumpState.InFlight;
 
                     palyerBoxCollider.isTrigger = false;
                     playerController.bananaPeal.RevivePlatano();
-                    //Debug.Log(ColliderRigidBod.velocity);
+                  
                     StartCoroutine(ResetPlayer(colVelocity));
-                    // playerController.playerHealthComponents.Increase();
+             
 
                 }
                 else
@@ -143,38 +146,21 @@ namespace Platformer.Mechanics
         public IEnumerator ResetPlayer(Vector2 velocity)
         {
 
-            /* var xV = velocity.x;
-             var targetX = velocity.x >
-                 0 ? velocity.x * -1 : Mathf.Abs(velocity.x);
-             var calX = targetX > 0 ? -2 : 2;
 
-
-
-             var yV = velocity.y;
-             var targetY = velocity.y >
-                 0 ? velocity.y * -1 : Mathf.Abs(velocity.y);
-             var calY = targetY > 0 ? -2 : 2;
-
-
-                  //targetX >= xV
-             while (targetX <= xV)
-             {
-
-
-             }*/
-            playerController.body.isKinematic = false;
-            playerController.body.bodyType = RigidbodyType2D.Dynamic;
+            //playerController.body.isKinematic = false;
+           // playerController.body.bodyType = RigidbodyType2D.Dynamic;
             yield return new WaitForSeconds(2f);
 
             playerController.transform.eulerAngles = new Vector3(0, 0, 0);
-            //playerController.velocity = new Vector2(0, 0);
+            //playerController.body.isKinematic = true;
+            playerController.velocity = new Vector2(0, 0);
 
 
              //ColliderRigidBod.velocity = new Vector2(0,0);
 
             palyerBoxCollider = null;
-            yield return new WaitForSeconds(1f);
-            playerController.body.isKinematic = true;
+            //yield return new WaitForSeconds(1f);
+           
             ColliderRigidBod = null;
             playerController = null;
         }

@@ -7,6 +7,7 @@ public class DropOffEscort : MonoBehaviour
     public Transform firstTarget;
     public Transform finalTarget;
     public GameObject player;
+    public GameObject player2;
     bool dropedPlayer;
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,10 @@ public class DropOffEscort : MonoBehaviour
         else if (transform.position.x == firstTarget.position.x && !dropedPlayer)
         {
             player.SetActive(true);
+            player2.SetActive(true);
             player.transform.parent = null;
-            
+            player2.transform.parent = null;
+
             dropedPlayer = true;
         }
         else 

@@ -22,7 +22,7 @@ namespace Platformer.Gameplay
                 // player.Teleport(new Vector3(player.transform.position.x ,
                 //      player.transform.position.y + 2, 0));
                 spriteEffects.StartToBlink();
-              //  player.lifeBar.ChangeSprite();
+             
             }
             //
         }

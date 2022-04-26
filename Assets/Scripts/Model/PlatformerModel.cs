@@ -24,6 +24,8 @@ namespace Platformer.Model
 
         public PlayerController player2;
 
+
+
         public Menu menu;
 
         /// <summary>

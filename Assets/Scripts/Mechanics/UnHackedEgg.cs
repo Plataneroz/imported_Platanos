@@ -57,7 +57,7 @@ namespace Platformer.Mechanics
                     else
                     {
                         StartCoroutine(player.spriteEffects.Blink());
-                        //player.lifeBar.ChangeSprite();
+                  
                     }
 
                 }

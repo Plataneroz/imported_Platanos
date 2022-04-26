@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
         public void Decrease()
         {
             Decrement();
-            //lifeBar.DecreaseBar();
+            lifeBar.DecreaseBar();
         }
         public void Increase()
         {
@@ -27,6 +27,7 @@ namespace Platformer.Mechanics
         {
             maxHP = 1;
             currentHP = 1;
+            lifeBar.IncreaseBar();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Platformer.GamePlay
         SpriteRenderer aim;
         public Sprite[] playerSprites;
         PlayerInput playerInput;
-        float breathCount = 1;
+        float breathCount = 1.4f;
         private void OnEnable()
         {
             playerController = GetComponent<PlayerController>();
@@ -50,12 +50,12 @@ namespace Platformer.GamePlay
             playerController.gameObject.layer = 6;
             playerController.controlEnabled = true;
             playerController.boxCollider2d.size = new Vector2(.52f, 1.131792f);
-           // playerController.capsuleCollider2D.enabled = true;
+          
             playerController.spriteRenderer.sprite = playerSprites[1];
             playerHealthComponents.ResetHP();
             aim.enabled = true ;
             playerController.enabled = true;
-            //playerInput.enabled = true;
+
             enabled = false;
 
         }
@@ -71,11 +71,13 @@ namespace Platformer.GamePlay
             {
                 
                 yield return new WaitForSeconds(1f); // update interval
+            
                 DarkenColor(tmp);
             }
-            if (breathCount >= 0)
+
+            if (breathCount <= 0)
                {
-                playerController.gameObject.SetActive(false);
+               // playerController.gameObject.SetActive(false);
                 //Schedule<PlayerDeath>();
                 } 
         }
@@ -86,6 +88,7 @@ namespace Platformer.GamePlay
             // Solid black. RGBA is (0, 0, 0, 1).
             //Debug.Log("this is g " + playerController.spriteRenderer.color);
             breathCount -= .2f;
+            
             playerController.spriteRenderer.color = new Color(breathCount,breathCount,breathCount) ;
         }
 
