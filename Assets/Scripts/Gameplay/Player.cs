@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public Vector2 direction;
     public Vector2 move;
     private bool facingRight = true;
+    public SpriteRenderer spriterRender;
 
     [Header("Vertical Movement")]
     public float jumpSpeed = 15f;
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
 
         if (onGround)
         {
-           // if(initiateJump){ jump = false; print("init jump set to fasle ");}
+            if(initiateJump) jump = false;
 
             if (Mathf.Abs(direction.x) < 0.4f || changingDirections)
             {
@@ -122,7 +123,8 @@ public class Player : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
+        //spriterRender.flipX
+        characterHolder.transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
     IEnumerator JumpSqueeze(float xSqueeze, float ySqueeze, float seconds)
     {

@@ -21365,7 +21365,8 @@ MonoBehaviour:
   moveSpeed: 10
   direction: {x: 0, y: 0}
   move: {x: 0, y: 0}
-  jumpSpeed: 15
+  spriterRender: {fileID: 0}
+  jumpSpeed: 8
   jumpDelay: 0.25
   rb: {fileID: 651766642}
   groundLayer:
@@ -21432,6 +21433,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.34
+--- !u!114 &651766646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4714660276004724360, guid: 26f399146b11346d0a4608c21bd95e13,
+    type: 3}
+  m_PrefabInstance: {fileID: 721547895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651766640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80efeca5dd5d49a89fb143782f738b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &651766654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9216549860191651776, guid: 26f399146b11346d0a4608c21bd95e13,
@@ -22392,7 +22405,7 @@ PrefabInstance:
     - target: {fileID: 4714660276004724360, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22402,7 +22415,7 @@ PrefabInstance:
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22432,7 +22445,7 @@ PrefabInstance:
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22448,7 +22461,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 651766640}
+      objectReference: {fileID: 651766646}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -22477,7 +22490,7 @@ PrefabInstance:
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Look
       objectReference: {fileID: 0}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22492,7 +22505,7 @@ PrefabInstance:
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: 
+      value: Platformer.Mechanics.PlayerWeaponAim, Script
       objectReference: {fileID: 0}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22507,7 +22520,7 @@ PrefabInstance:
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4881873719321653817, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22547,7 +22560,7 @@ PrefabInstance:
     - target: {fileID: 9216549860191651776, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 9216549860191651776, guid: 26f399146b11346d0a4608c21bd95e13,
         type: 3}
@@ -22610,14 +22623,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 9221063074436438013, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
+    - {fileID: 0}
     - {fileID: 9106868149360717312, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 5709244768144527316, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 9221063074436437985, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 8843612516275418861, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 9221063074436438010, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 3959406236485960364, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
-    - {fileID: 4714660276004724360, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 9221063074436437986, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 2869686206214160695, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}
     - {fileID: 4014544413996201638, guid: 26f399146b11346d0a4608c21bd95e13, type: 3}

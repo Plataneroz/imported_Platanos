@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 namespace Platformer.Mechanics
 {
@@ -15,21 +15,22 @@ namespace Platformer.Mechanics
          public Transform pickedUpObjTrans;
          public Rigidbody2D ColliderRigidBod;
          public CapsuleCollider2D pickedUpObjCapCollider;
-         public CapsuleCollider2D playerCCCollider;
+        // public CircleCollider2D playerCCCollider;
          public BoxCollider2D palyerBoxCollider;
          public PlayerController playerController;
+        bool triggerGrab;
 
         private void Start()
         {
-            playerCCCollider = GetComponent<CapsuleCollider2D>();
-
+           // playerCCCollider = GetComponent<CircleCollider2D>();
         }
         //public  SpriteRenderer sprite;
         public GameObject currentColliderGameObj;
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!playerCCCollider.enabled) return;
+            print(triggerGrab);
+            if (!triggerGrab) return;
             if (collision.tag == "unhackedEgg" && ColliderRigidBod == null)
             {   if(collision.transform.parent != null)
                 {
@@ -37,8 +38,6 @@ namespace Platformer.Mechanics
                 }
                 // collision.gameObject.transform.parent.gameObject
                 Grab(collision);
-
-
             }
             else if (collision.tag == "peal")
             {
@@ -85,7 +84,6 @@ namespace Platformer.Mechanics
             if (ColliderRigidBod != null)
             {
                 pickedUpObjCapCollider = null;
-                //playerCCCollider = null;
                 pickedUpObjTrans = null;
                 ColliderRigidBod = null;
             }
@@ -96,28 +94,20 @@ namespace Platformer.Mechanics
             if (ColliderRigidBod != null)
             {
                 var colVelocity = transform.GetChild(0).transform.right * distance;
-               // currentColliderGameObj.tag = "pickUpObj";
                 currentColliderGameObj.gameObject.layer = 7;
                 ColliderRigidBod.isKinematic = false;
                 
-             
                 StartCoroutine(ChangeTriggerToFalse());
-                //pickedUpObjCapCollider.isTrigger = false;
                 pickedUpObjTrans.position = transform.GetChild(0).position;
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
-                //ColliderRigidBod.velocity = colVelocity;//transform.GetChild(0).transform.right * distance;
-               ColliderRigidBod.AddForce(colVelocity, ForceMode2D.Impulse);
+
+                ColliderRigidBod.AddForce(colVelocity, ForceMode2D.Impulse);
                 if (playerController != null)
                 {
-
-                    //playerController.jumpState = PlayerController.JumpState.InFlight;
-
                     palyerBoxCollider.isTrigger = false;
                     playerController.bananaPeal.RevivePlatano();
                   
                     StartCoroutine(ResetPlayer(colVelocity));
-             
-
                 }
                 else
                 {
@@ -125,49 +115,37 @@ namespace Platformer.Mechanics
                 }
                 pickedUpObjTrans.parent = null;
                 pickedUpObjTrans = null;
-                
- 
-               
+             
             }
-
-
         }
 
         public IEnumerator ChangeTriggerToFalse()
         {
-
             yield return new WaitForSeconds(0.05f);
             pickedUpObjCapCollider.isTrigger = false;
-           // playerCCCollider.isTrigger = false;
- 
         }
 
 
         public IEnumerator ResetPlayer(Vector2 velocity)
         {
-
-
-            //playerController.body.isKinematic = false;
-           // playerController.body.bodyType = RigidbodyType2D.Dynamic;
             yield return new WaitForSeconds(2f);
 
             playerController.transform.eulerAngles = new Vector3(0, 0, 0);
-            //playerController.body.isKinematic = true;
-            playerController.velocity = new Vector2(0, 0);
-
-
-             //ColliderRigidBod.velocity = new Vector2(0,0);
+            //playerController.velocity = new Vector2(0, 0);
 
             palyerBoxCollider = null;
-            //yield return new WaitForSeconds(1f);
-           
             ColliderRigidBod = null;
             playerController = null;
         }
 
+        public void OnGrab(InputAction.CallbackContext context)
+        {
+            
+            if (!context.canceled) { triggerGrab = true; }
+            else { triggerGrab = false; }
+        }
+
+
     }
-
-
-
 
 }
