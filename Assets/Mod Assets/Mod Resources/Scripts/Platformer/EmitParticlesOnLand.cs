@@ -19,10 +19,10 @@ public class EmitParticlesOnLand : MonoBehaviour
         p = GetComponent<ParticleSystem>();
 
         if (emitOnLand) {
-            Platformer.Gameplay.PlayerLanded.OnExecute += PlayerLanded_OnExecute;
-            void PlayerLanded_OnExecute(Platformer.Gameplay.PlayerLanded obj) {
-                p.Play();
-            }
+           // Platformer.Gameplay.PlayerLanded.OnExecute += PlayerLanded_OnExecute;
+          //  void PlayerLanded_OnExecute(Platformer.Gameplay.PlayerLanded obj) {
+              //  p.Play();
+           /// }
         }
 
         /*if (emitOnEnemyDeath) {

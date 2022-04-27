@@ -10,8 +10,8 @@ namespace Platformer.GamePlay
     public class BananaPeal : MonoBehaviour
     {
 
-        SpriteRenderer spriteRender;
-        PlayerController playerController;
+        SpriteRenderer spriteRenderer;
+        Player plyrControl;
         PlayerHealthComponents playerHealthComponents;
         SpriteRenderer aim;
         public Sprite[] playerSprites;
@@ -19,19 +19,18 @@ namespace Platformer.GamePlay
         float breathCount = 1.4f;
         private void OnEnable()
         {
-            playerController = GetComponent<PlayerController>();
+            plyrControl = GetComponent<Player>();
+            spriteRenderer = plyrControl.gameObject.GetComponentInChildren<SpriteRenderer>();
             playerHealthComponents = GetComponent<PlayerHealthComponents>();
-            playerController.controlEnabled = false;
-            //playerInput = GetComponent<PlayerInput>();
-            //playerInput.DeactivateInput();
-            playerController.gameObject.tag = "peal";
-            playerController.gameObject.layer = 15;
-            playerSprites[1] = playerController.spriteRenderer.sprite;
-            playerController.spriteRenderer.sprite = playerSprites[0];
-            playerController.boxCollider2d.size = new Vector2(.52f, .36f);
-            aim = playerController.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>() ;
+            plyrControl.controlEnabled = false;
+            plyrControl.gameObject.tag = "peal";
+            plyrControl.gameObject.layer = 15;
+            playerSprites[1] = spriteRenderer.sprite;
+            spriteRenderer.sprite = playerSprites[0];
+            plyrControl.capsuleCollider2d.size = new Vector2(.52f, .36f);
+            aim = plyrControl.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>() ;
             aim.enabled = false;
-            playerController.enabled = false;
+            plyrControl.enabled = false;
             StartCoroutine(Rot());
         }
 
@@ -45,16 +44,16 @@ namespace Platformer.GamePlay
         public void RevivePlatano()
         {
             // set position
-            playerController.spriteRenderer.color = new Color(1, 1, 1);
-            playerController.gameObject.tag = "Player";
-            playerController.gameObject.layer = 6;
-            playerController.controlEnabled = true;
-            playerController.boxCollider2d.size = new Vector2(.52f, 1.131792f);
+            spriteRenderer.color = new Color(1, 1, 1);
+            plyrControl.gameObject.tag = "Player";
+            plyrControl.gameObject.layer = 6;
+            plyrControl.controlEnabled = true;
+            plyrControl.capsuleCollider2d.size = new Vector2(.52f, 1.131792f);
           
-            playerController.spriteRenderer.sprite = playerSprites[1];
+            spriteRenderer.sprite = playerSprites[1];
             playerHealthComponents.ResetHP();
             aim.enabled = true ;
-            playerController.enabled = true;
+            plyrControl.enabled = true;
 
             enabled = false;
 
@@ -62,8 +61,8 @@ namespace Platformer.GamePlay
 
         public IEnumerator Rot()
         {
-            float alphaVal = playerController.spriteRenderer.color.a;
-            Color tmp = playerController.spriteRenderer.color;
+            float alphaVal = spriteRenderer.color.a;
+            Color tmp = spriteRenderer.color;
              
             while (breathCount >= 0
                 && playerHealthComponents.GetCurrentHP() == 0)
@@ -76,15 +75,14 @@ namespace Platformer.GamePlay
 
             if (breathCount <= 0)
                {
-               // playerController.gameObject.SetActive(false);
+               // plyrControl.gameObject.SetActive(false);
                 //Schedule<PlayerDeath>();
                 } 
         }
         void DarkenColor( Color tmp)
         {
             breathCount -= .2f;
-            
-            playerController.spriteRenderer.color = new Color(breathCount,breathCount,breathCount) ;
+            spriteRenderer.color = new Color(breathCount,breathCount,breathCount) ;
         }
 
     }

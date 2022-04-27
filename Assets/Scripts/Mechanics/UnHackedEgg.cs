@@ -38,7 +38,7 @@ namespace Platformer.Mechanics
             //var player = collision.gameObject.GetComponent<PlayerController>();
             if (collision.transform.tag == "Player" & harmFull)
             {
-                var player = collision.gameObject.GetComponent<PlayerController>();
+                var player = collision.gameObject.GetComponent<Player>();
                 var healthComponents = collision.gameObject.GetComponent<PlayerHealthComponents>();
                 if (player.playerRestTime.canHarmPlayer)
                 {

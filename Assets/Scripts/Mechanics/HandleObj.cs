@@ -17,7 +17,7 @@ namespace Platformer.Mechanics
          public CapsuleCollider2D pickedUpObjCapCollider;
         // public CircleCollider2D playerCCCollider;
          public BoxCollider2D palyerBoxCollider;
-         public PlayerController playerController;
+         public Player plyrControl;
         bool triggerGrab;
 
         private void Start()
@@ -60,7 +60,7 @@ namespace Platformer.Mechanics
             if (currentColliderGameObj.tag == "peal")
             { palyerBoxCollider = collision.GetComponent<BoxCollider2D>();
               palyerBoxCollider.isTrigger = true;
-              playerController = collision.GetComponent<PlayerController>();
+              plyrControl = collision.GetComponent<Player>();
                 currentColliderGameObj.tag = "Player";
             }
             pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
@@ -102,10 +102,10 @@ namespace Platformer.Mechanics
                 pickedUpObjTrans.eulerAngles = transform.GetChild(0).transform.eulerAngles;
 
                 ColliderRigidBod.AddForce(colVelocity, ForceMode2D.Impulse);
-                if (playerController != null)
+                if (plyrControl != null)
                 {
                     palyerBoxCollider.isTrigger = false;
-                    playerController.bananaPeal.RevivePlatano();
+                    plyrControl.bananaPeal.RevivePlatano();
                   
                     StartCoroutine(ResetPlayer(colVelocity));
                 }
@@ -130,12 +130,12 @@ namespace Platformer.Mechanics
         {
             yield return new WaitForSeconds(2f);
 
-            playerController.transform.eulerAngles = new Vector3(0, 0, 0);
-            //playerController.velocity = new Vector2(0, 0);
+            plyrControl.transform.eulerAngles = new Vector3(0, 0, 0);
+            //plyrControl.velocity = new Vector2(0, 0);
 
             palyerBoxCollider = null;
             ColliderRigidBod = null;
-            playerController = null;
+            plyrControl = null;
         }
 
         public void OnGrab(InputAction.CallbackContext context)

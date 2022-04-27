@@ -94,7 +94,7 @@ namespace Platformer.Mechanics
                 else if (jumpancelled)
                 {
                     stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
+                  //  Schedule<PlayerStopJump>().player = this;
                 }
             }
 
@@ -122,7 +122,7 @@ namespace Platformer.Mechanics
                 case JumpState.InFlight:
                     if (IsGrounded)
                     {
-                        Schedule<PlayerLanded>().player = this;
+                       // Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
                     }
                     break;
