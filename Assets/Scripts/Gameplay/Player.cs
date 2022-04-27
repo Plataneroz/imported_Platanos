@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
 
         if (onGround)
         {
-            if(initiateJump) jump = false;
+
 
             if (Mathf.Abs(direction.x) < 0.4f || changingDirections)
             {
@@ -112,10 +112,12 @@ public class Player : MonoBehaviour
             rb.drag = linearDrag * 0.15f;
             if (rb.velocity.y < 0)
             {
+                jump = false;
                 rb.gravityScale = gravity * fallMultiplier;
             }
             else if (rb.velocity.y > 0 && !jump)
             {
+
                 rb.gravityScale = gravity * (fallMultiplier / 2);
             }
         }

@@ -64,8 +64,7 @@ namespace Platformer.GamePlay
         {
             float alphaVal = playerController.spriteRenderer.color.a;
             Color tmp = playerController.spriteRenderer.color;
-            //Debug.Log("this is g " + playerController.spriteRenderer.color);
-            
+             
             while (breathCount >= 0
                 && playerHealthComponents.GetCurrentHP() == 0)
             {
@@ -83,10 +82,6 @@ namespace Platformer.GamePlay
         }
         void DarkenColor( Color tmp)
         {
-
-            //Solid white. RGBA is (1, 1, 1, 1).
-            // Solid black. RGBA is (0, 0, 0, 1).
-            //Debug.Log("this is g " + playerController.spriteRenderer.color);
             breathCount -= .2f;
             
             playerController.spriteRenderer.color = new Color(breathCount,breathCount,breathCount) ;

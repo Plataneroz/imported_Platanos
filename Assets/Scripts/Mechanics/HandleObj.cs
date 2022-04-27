@@ -29,7 +29,7 @@ namespace Platformer.Mechanics
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            print(triggerGrab);
+            // print(triggerGrab);
             if (!triggerGrab) return;
             if (collision.tag == "unhackedEgg" && ColliderRigidBod == null)
             {   if(collision.transform.parent != null)
@@ -143,6 +143,12 @@ namespace Platformer.Mechanics
             
             if (!context.canceled) { triggerGrab = true; }
             else { triggerGrab = false; }
+        }
+
+        public void OnThrow(InputAction.CallbackContext context)
+        {
+            if (context.started) { Throwing(14); }
+
         }
 
 
