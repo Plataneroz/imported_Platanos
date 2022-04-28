@@ -20,9 +20,9 @@ namespace Platformer.Model
         /// The main component which controls the player sprite, controlled 
         /// by the user.
         /// </summary>
-        public PlayerController player;
+        public Player player;
 
-        public PlayerController player2;
+        public Player player2;
 
 
 

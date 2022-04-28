@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
          public Transform pickedUpObjTrans;
          public Rigidbody2D ColliderRigidBod;
          public CapsuleCollider2D pickedUpObjCapCollider;
-        // public CircleCollider2D playerCCCollider;
+        
          public BoxCollider2D palyerBoxCollider;
          public Player plyrControl;
         bool triggerGrab;
@@ -70,8 +70,9 @@ namespace Platformer.Mechanics
         }
         public void FollowingPlayer()
         {
-
+            ColliderRigidBod.velocity = new Vector2(0,0);
             ColliderRigidBod.isKinematic = true;
+         
             pickedUpObjTrans.SetParent(transform.GetChild(0), true);
             pickedUpObjTrans.localPosition = new Vector3(.05f, .05f, 0);
             pickedUpObjCapCollider.isTrigger = true;
@@ -140,6 +141,7 @@ namespace Platformer.Mechanics
 
         public void OnGrab(InputAction.CallbackContext context)
         {
+            print("grabbbbb");
             
             if (!context.canceled) { triggerGrab = true; }
             else { triggerGrab = false; }
@@ -147,6 +149,7 @@ namespace Platformer.Mechanics
 
         public void OnThrow(InputAction.CallbackContext context)
         {
+            print("Trhwoooo");
             if (context.started) { Throwing(14); }
 
         }

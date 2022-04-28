@@ -11,7 +11,8 @@ namespace Platformer.Core
 
         public void StartScreen()
         {
-            SceneManager.LoadScene(0);
+            StartCoroutine(LoadNextAsyncScene(0));
+            //SceneManager.LoadScene(0);
         }
 
         public void RestartScene()

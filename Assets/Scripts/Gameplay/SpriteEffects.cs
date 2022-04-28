@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
         Color defaultColor;
         private void Start()
         {
-            spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+           // spriteRenderer = transform.root.GetComponent<SpriteRenderer>();
 
             defaultColor = spriteRenderer.color;
         }

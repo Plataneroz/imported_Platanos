@@ -46,7 +46,7 @@ namespace Platformer.Mechanics
         public float groundLength = 0.6f;
         public Vector3 colliderOffset;
         public CapsuleCollider2D capsuleCollider2d;
-
+        public PlayerHealthComponents playerHealthComponents;
 
         private void Start()
         {
@@ -54,6 +54,7 @@ namespace Platformer.Mechanics
             capsuleCollider2d = GetComponent<CapsuleCollider2D>();
             bananaPeal = GetComponent<BananaPeal>();
             playerRestTime = GetComponent<PlayerRestTime>();
+            playerHealthComponents = GetComponent<PlayerHealthComponents>();
         }
 
         // Update is called once per frame
@@ -61,6 +62,8 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
+                //print("moving IN UPDATE" +
+                   
                 bool wasOnGround = onGround;
                 onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer)
                          || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
@@ -183,9 +186,9 @@ namespace Platformer.Mechanics
 
         public void OnMove(InputAction.CallbackContext cont)
         {
-
-            { move = cont.ReadValue<Vector2>(); }
-
+            
+             move = cont.ReadValue<Vector2>();
+           
 
         }
 

@@ -10,7 +10,7 @@ namespace Platformer.GamePlay
     public class BananaPeal : MonoBehaviour
     {
 
-        SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteRenderer;
         Player plyrControl;
         PlayerHealthComponents playerHealthComponents;
         SpriteRenderer aim;
@@ -20,7 +20,7 @@ namespace Platformer.GamePlay
         private void OnEnable()
         {
             plyrControl = GetComponent<Player>();
-            spriteRenderer = plyrControl.gameObject.GetComponentInChildren<SpriteRenderer>();
+            //spriteRenderer = plyrControl.gameObject.GetComponent<SpriteRenderer>();
             playerHealthComponents = GetComponent<PlayerHealthComponents>();
             plyrControl.controlEnabled = false;
             plyrControl.gameObject.tag = "peal";

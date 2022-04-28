@@ -19,13 +19,21 @@ namespace Platformer.Gameplay
             
             var player = model.player;
             var player2 = model.player2;
-
-            if (!player.playerHealthComponents.IsAlive
-                && !player2.playerHealthComponents.IsAlive)
+            if (player2 != null)
             {
-                
+                if (!player.playerHealthComponents.IsAlive
+                    && !player2.playerHealthComponents.IsAlive)
+                {
+
+                    model.menu.GameOver();
+                }
+            }
+            else if(!player.playerHealthComponents.IsAlive )
+            {
+
                 model.menu.GameOver();
             }
+
            /* if (!player.playerHealthComponents.IsAlive )
             {
                 player.playerHealthComponents.Die();

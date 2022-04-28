@@ -16,21 +16,15 @@ namespace Platformer.Gameplay
        // public PlayerController playerController;
         public override void Execute()
         {
-            var plyr = health.GetComponent<PlayerController>();
+            var plyr = health.GetComponent<Player>();
             if (plyr != null)
             {
                 plyr.bananaPeal.enabled = true;
-                Schedule<PlayerDeath>();
+                 Schedule<PlayerDeath>();
 
             }
-            else if (health.gameObject.tag == "Kart")
-            { //Schedule<PlayerDeath>();
-            }
-            else
-            {
-                var villian =Schedule<EnemyDeath>();
-                villian.enemy = health.gameObject;
-            }
+
+
         }
     }
 }

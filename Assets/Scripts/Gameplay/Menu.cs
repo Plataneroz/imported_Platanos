@@ -47,7 +47,7 @@ public class Menu : MonoBehaviour
 
     public void OnRestart(InputAction.CallbackContext context)
     {
-        if (context.canceled )
+        if (context.started )
         {  if(GameIsOver || GameisPaused)sceneLoading.RestartScene(); Time.timeScale = 1f; }
     }
 
