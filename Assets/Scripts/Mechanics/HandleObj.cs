@@ -20,18 +20,16 @@ namespace Platformer.Mechanics
          public Player plyrControl;
         bool triggerGrab;
 
-        private void Start()
-        {
-           // playerCCCollider = GetComponent<CircleCollider2D>();
-        }
+ 
         //public  SpriteRenderer sprite;
         public GameObject currentColliderGameObj;
 
-        void OnTriggerEnter2D(Collider2D collision)
+        void OnCollisionEnter2D(Collision2D collision)
+
         {
             // print(triggerGrab);
             if (!triggerGrab) return;
-            if (collision.tag == "unhackedEgg" && ColliderRigidBod == null)
+            if (collision.gameObject.tag == "unhackedEgg" && ColliderRigidBod == null)
             {   if(collision.transform.parent != null)
                 {
                     collision.transform.root.GetComponent<HandleObj>().DropObj();
@@ -39,7 +37,7 @@ namespace Platformer.Mechanics
                 // collision.gameObject.transform.parent.gameObject
                 Grab(collision);
             }
-            else if (collision.tag == "peal")
+            else if (collision.gameObject.tag == "peal")
             {
                 Grab(collision);
             }
@@ -52,19 +50,19 @@ namespace Platformer.Mechanics
                 c.enabled = active;
             }
         }
-        public void Grab(Collider2D collision)
+        public void Grab(Collision2D collision)
         {
             
             currentColliderGameObj = collision.gameObject;
-            collision.GetComponent<SpriteRenderer>().sortingOrder = 5;
+            collision.collider.GetComponent<SpriteRenderer>().sortingOrder = 5;
             if (currentColliderGameObj.tag == "peal")
-            { palyerBoxCollider = collision.GetComponent<BoxCollider2D>();
+            { palyerBoxCollider = collision.collider.GetComponent<BoxCollider2D>();
               palyerBoxCollider.isTrigger = true;
-              plyrControl = collision.GetComponent<Player>();
+              plyrControl = collision.collider.GetComponent<Player>();
                 currentColliderGameObj.tag = "Player";
             }
-            pickedUpObjCapCollider = collision.GetComponent<CapsuleCollider2D>();
-            ColliderRigidBod = collision.attachedRigidbody;
+            pickedUpObjCapCollider = collision.collider.GetComponent<CapsuleCollider2D>();
+            ColliderRigidBod = collision.collider.attachedRigidbody;
             pickedUpObjTrans = collision.transform;
             FollowingPlayer();
         }
