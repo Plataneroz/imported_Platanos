@@ -16,7 +16,7 @@ namespace Platformer.Mechanics
          public Rigidbody2D ColliderRigidBod;
          public CapsuleCollider2D pickedUpObjCapCollider;
         
-         public BoxCollider2D palyerBoxCollider;
+         public CapsuleCollider2D playerCapsuleCollider;
          public Player plyrControl;
         bool triggerGrab;
 
@@ -54,11 +54,12 @@ namespace Platformer.Mechanics
         {
             
             currentColliderGameObj = collision.gameObject;
-            collision.collider.GetComponent<SpriteRenderer>().sortingOrder = 5;
+            //collision.collider.GetComponent<SpriteRenderer>().sortingOrder = 5;
             if (currentColliderGameObj.tag == "peal")
-            { palyerBoxCollider = collision.collider.GetComponent<BoxCollider2D>();
-              palyerBoxCollider.isTrigger = true;
-              plyrControl = collision.collider.GetComponent<Player>();
+            { playerCapsuleCollider = collision.collider.GetComponent<CapsuleCollider2D>();
+              playerCapsuleCollider.isTrigger = true;
+                currentColliderGameObj.gameObject.layer = 16;
+                plyrControl = collision.collider.GetComponent<Player>();
                 currentColliderGameObj.tag = "Player";
             }
             pickedUpObjCapCollider = collision.collider.GetComponent<CapsuleCollider2D>();
@@ -93,7 +94,7 @@ namespace Platformer.Mechanics
             if (ColliderRigidBod != null)
             {
                 var colVelocity = transform.GetChild(0).transform.right * distance;
-                currentColliderGameObj.gameObject.layer = 7;
+                
                 ColliderRigidBod.isKinematic = false;
                 
                 StartCoroutine(ChangeTriggerToFalse());
@@ -103,13 +104,14 @@ namespace Platformer.Mechanics
                 ColliderRigidBod.AddForce(colVelocity, ForceMode2D.Impulse);
                 if (plyrControl != null)
                 {
-                    palyerBoxCollider.isTrigger = false;
+                    playerCapsuleCollider.isTrigger = false;
                     plyrControl.bananaPeal.RevivePlatano();
-                  
+                    currentColliderGameObj.gameObject.layer = 6;
                     StartCoroutine(ResetPlayer(colVelocity));
                 }
                 else
                 {
+                    currentColliderGameObj.gameObject.layer = 7;
                     ColliderRigidBod = null;
                 }
                 pickedUpObjTrans.parent = null;
@@ -132,7 +134,7 @@ namespace Platformer.Mechanics
             plyrControl.transform.eulerAngles = new Vector3(0, 0, 0);
             //plyrControl.velocity = new Vector2(0, 0);
 
-            palyerBoxCollider = null;
+            playerCapsuleCollider = null;
             ColliderRigidBod = null;
             plyrControl = null;
         }

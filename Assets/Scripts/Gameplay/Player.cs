@@ -62,7 +62,7 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
-                //print("moving IN UPDATE" +
+               
                    
                 bool wasOnGround = onGround;
                 onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer)
