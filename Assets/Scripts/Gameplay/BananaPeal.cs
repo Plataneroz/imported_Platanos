@@ -12,22 +12,23 @@ namespace Platformer.GamePlay
 
         public SpriteRenderer spriteRenderer;
         Player plyrControl;
-        PlayerHealthComponents playerHealthComponents;
+        //PlayerHealthComponents playerHealthComponents;
         SpriteRenderer aim;
         public Sprite[] playerSprites;
-        PlayerInput playerInput;
+     
         float breathCount = 1.4f;
         private void OnEnable()
         {
             plyrControl = GetComponent<Player>();
-            //spriteRenderer = plyrControl.gameObject.GetComponent<SpriteRenderer>();
-            playerHealthComponents = GetComponent<PlayerHealthComponents>();
             plyrControl.controlEnabled = false;
+            plyrControl.rb.drag = 50;
             plyrControl.gameObject.tag = "peal";
             plyrControl.gameObject.layer = 15;
+            plyrControl.rb.velocity = new Vector2(0,0);
             playerSprites[1] = spriteRenderer.sprite;
             spriteRenderer.sprite = playerSprites[0];
             plyrControl.capsuleCollider2d.size = new Vector2(.52f, .36f);
+            //plyrControl.capsuleCollider2d.isTrigger = true;
             aim = plyrControl.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>() ;
             aim.enabled = false;
             plyrControl.enabled = false;
@@ -48,10 +49,10 @@ namespace Platformer.GamePlay
             plyrControl.gameObject.tag = "Player";
             plyrControl.gameObject.layer = 6;
             plyrControl.controlEnabled = true;
-            plyrControl.capsuleCollider2d.size = new Vector2(.52f, 1.131792f);
+            plyrControl.capsuleCollider2d.size = new Vector2(0.38f, 0.93f);
           
             spriteRenderer.sprite = playerSprites[1];
-            playerHealthComponents.ResetHP();
+           
             aim.enabled = true ;
             plyrControl.enabled = true;
 
@@ -65,7 +66,7 @@ namespace Platformer.GamePlay
             Color tmp = spriteRenderer.color;
              
             while (breathCount >= 0
-                && playerHealthComponents.GetCurrentHP() == 0)
+                && plyrControl.playerHealthComponents.GetCurrentHP() == 0)
             {
                 
                 yield return new WaitForSeconds(1f); // update interval
