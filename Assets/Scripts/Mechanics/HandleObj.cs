@@ -5,11 +5,6 @@ using UnityEngine.InputSystem;
 namespace Platformer.Mechanics
 {
 
-    /// <summary>
-    /// Grab should be used on player  
-    /// A simple controller for enemies. Provides movement control over a patrol path.Gr</summary>
-    /// player should be able to pick diff objs that
-    /// have diff attacks
     public class HandleObj : MonoBehaviour
     {
          public Transform pickedUpObjTrans;
@@ -22,10 +17,8 @@ namespace Platformer.Mechanics
          bool triggerGrab;
         //public  SpriteRenderer sprite;
         public GameObject currentColliderGameObj;
-
         //OnCollisionStay2d might be better for this 
         void OnCollisionEnter2D(Collision2D collision)
-
         {
             if (!triggerGrab) return;
             else if(numberOfPickedUP < 4 && collision.gameObject.tag == "unhackedEgg"
@@ -35,12 +28,10 @@ namespace Platformer.Mechanics
                 SavedColliders[numberOfPickedUP] = collision;
                 if (SavedColliders[numberOfPickedUP].gameObject.tag == "peal")
                 {
-
                     plyrControl = collision.collider.GetComponent<Player>();
                     plyrControl.playerHealthComponents.ResetHP();
                     SavedColliders[numberOfPickedUP].gameObject.tag = "Player";
-                }
-               
+                }           
                 numberOfPickedUP++;
             }
         }
@@ -49,7 +40,6 @@ namespace Platformer.Mechanics
         {
             if (numberOfPickedUP != 0)
             {
-                
                 var colVelocity = transform.GetChild(0).transform.right * distance;
                 SavedColliders[numberOfPickedUP].transform.position = transform.GetChild(0).position;
                 SavedColliders[numberOfPickedUP].transform.eulerAngles = transform.GetChild(0).transform.eulerAngles;
@@ -75,7 +65,6 @@ namespace Platformer.Mechanics
             yield return new WaitForSeconds(.5f);
             plyrControl.transform.eulerAngles = new Vector3(0, 0, 0);
         }
-
         public void OnGrab(InputAction.CallbackContext context)
         {
        //the longer its held the more you obsure 

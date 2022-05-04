@@ -4,11 +4,13 @@ using UnityEngine;
 namespace Platformer.Mechanics
 {
     public class PlayerHealthComponents : Health
-    {   
+    {
+        PlayerRestTime playerRest; 
         public LifeBar lifeBar;
         private void Start()
         {
-             maxHP = 3;
+            playerRest = GetComponent<PlayerRestTime>();
+                maxHP = 3;
             currentHP = 3;
 
         }
@@ -19,8 +21,8 @@ namespace Platformer.Mechanics
         }
         public void Increase()
         {
-            Increase();
-            lifeBar.IncreaseBar();
+            if(!playerRest) Increase(); lifeBar.IncreaseBar();
+
         }
 
         public void ResetHP()

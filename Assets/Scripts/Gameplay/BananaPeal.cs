@@ -55,7 +55,7 @@ namespace Platformer.GamePlay
            
             aim.enabled = true ;
             plyrControl.enabled = true;
-
+            plyrControl.playerRestTime.CantHurtPlayer();
             enabled = false;
 
         }
