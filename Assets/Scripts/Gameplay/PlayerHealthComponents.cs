@@ -10,8 +10,8 @@ namespace Platformer.Mechanics
         private void Start()
         {
             playerRest = GetComponent<PlayerRestTime>();
-                maxHP = 3;
-            currentHP = 3;
+                maxHP = 3000;
+            currentHP = 3000;
 
         }
         public void Decrease()

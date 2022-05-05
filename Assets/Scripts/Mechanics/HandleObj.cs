@@ -7,11 +7,13 @@ namespace Platformer.Mechanics
 
     public class HandleObj : MonoBehaviour
     {
+        public float targetOffset = .7f;
          public Transform pickedUpObjTrans;
          public Rigidbody2D ColliderRigidBod;
          public CapsuleCollider2D pickedUpObjCapCollider;
          int numberOfPickedUP =0;
-         Collision2D[] SavedColliders = new Collision2D[4];
+         int sizeOfBasket = 10;
+         Collision2D[] SavedColliders = new Collision2D[10];
          public CapsuleCollider2D playerCapsuleCollider;
          public Player plyrControl;
          bool triggerGrab;
@@ -21,7 +23,7 @@ namespace Platformer.Mechanics
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (!triggerGrab) return;
-            else if(numberOfPickedUP < 4 && collision.gameObject.tag == "unhackedEgg"
+            else if(numberOfPickedUP < sizeOfBasket && collision.gameObject.tag == "unhackedEgg"
                         || collision.gameObject.tag == "peal") {
 
                 collision.gameObject.SetActive(false);
@@ -33,16 +35,21 @@ namespace Platformer.Mechanics
                     SavedColliders[numberOfPickedUP].gameObject.tag = "Player";
                 }           
                 numberOfPickedUP++;
+                print("cuatos huevos tienes " + numberOfPickedUP);
             }
         }
 
         public void Throwing(int distance)
         {
-            if (numberOfPickedUP != 0)
+            print("cuatos huevos tienes before throwing" + numberOfPickedUP);
+            if (numberOfPickedUP > 0)
             {
+                numberOfPickedUP--;
+                var objPos = transform.GetChild(0).position;
+     
                 var colVelocity = transform.GetChild(0).transform.right * distance;
-                SavedColliders[numberOfPickedUP].transform.position = transform.GetChild(0).position;
-                SavedColliders[numberOfPickedUP].transform.eulerAngles = transform.GetChild(0).transform.eulerAngles;
+                SavedColliders[numberOfPickedUP].gameObject.transform.position = new Vector3(objPos.x , objPos.y , 0);
+                SavedColliders[numberOfPickedUP].gameObject.transform.eulerAngles = transform.GetChild(0).transform.eulerAngles;
                 SavedColliders[numberOfPickedUP].gameObject.SetActive(true);
                 SavedColliders[numberOfPickedUP].collider.attachedRigidbody.AddForce(colVelocity, ForceMode2D.Impulse);
                 if (plyrControl != null)
@@ -54,9 +61,9 @@ namespace Platformer.Mechanics
                 else
                 {
                     SavedColliders[numberOfPickedUP].gameObject.layer = 7;
+                    SavedColliders[numberOfPickedUP] = null;
                 }
-               
-                numberOfPickedUP--;
+                print("cuatos huevos tienes " + numberOfPickedUP);
             }
         }
 
