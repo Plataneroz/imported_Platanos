@@ -104,7 +104,7 @@ namespace Platformer.Mechanics
             
             rb.AddForce(Vector2.right * horizontal * moveSpeed);
             var velocityX = Mathf.Sign(rb.velocity.x);
-            if (Mathf.Abs(move.x) > 0) {
+            if (Mathf.Abs(move.x) > 0 && onGround) {
                 animator.Play("PlataRun");
 
 
