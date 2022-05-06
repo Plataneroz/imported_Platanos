@@ -28,7 +28,7 @@ namespace Platformer.Mechanics
 
         [Header("Components")]
         public Rigidbody2D rb;
-        //public Animator animator;
+        public Animator animator;
         public LayerMask groundLayer;
         public GameObject characterHolder;
         public BananaPeal bananaPeal;
@@ -50,6 +50,8 @@ namespace Platformer.Mechanics
 
         private void Start()
         {
+            
+            animator = transform.GetChild(2).GetComponent<Animator>();
             spriteEffects = GetComponent<SpriteEffects>();
             capsuleCollider2d = GetComponent<CapsuleCollider2D>();
             bananaPeal = GetComponent<BananaPeal>();
@@ -78,7 +80,8 @@ namespace Platformer.Mechanics
 
                     jumpTimer = Time.time + jumpDelay;
                 }
-                // animator.SetBool("onGround", onGround);
+                if(move.x ==0)animator.Play("PlataIdle");
+                //animator.Play("onGround", onGround);
                 direction = new Vector2(move.x, move.y);
             }
         }
@@ -97,18 +100,23 @@ namespace Platformer.Mechanics
         }
         void moveCharacter(float horizontal)
         {
+            
             rb.AddForce(Vector2.right * horizontal * moveSpeed);
-
+            var velocityX = Mathf.Sign(rb.velocity.x);
+            if (Mathf.Abs(move.x) > 0) animator.Play("PlataRun");
             if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
             {
                 Flip();
             }
             if (Mathf.Abs(rb.velocity.x) > maxSpeed)
             {
-                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+               
+                rb.velocity = new Vector2(velocityX * maxSpeed, rb.velocity.y);
+               
+                // animator.speed = velocityX  ;
             }
-            // animator.SetFloat("horizontal", Mathf.Abs(rb.velocity.x));
-            // animator.SetFloat("vertical", rb.velocity.y);
+
+            
         }
         void Jump()
         {
@@ -188,7 +196,7 @@ namespace Platformer.Mechanics
         {
             
              move = cont.ReadValue<Vector2>();
-           
+            
 
         }
 
