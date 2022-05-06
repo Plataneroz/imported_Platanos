@@ -80,7 +80,7 @@ namespace Platformer.Mechanics
 
                     jumpTimer = Time.time + jumpDelay;
                 }
-                if(move.x ==0)animator.Play("PlataIdle");
+                if(move.x ==0 & onGround)animator.Play("PlataIdle");
                 //animator.Play("onGround", onGround);
                 direction = new Vector2(move.x, move.y);
             }
@@ -92,6 +92,7 @@ namespace Platformer.Mechanics
                 moveCharacter(move.x);
                 if (jumpTimer > Time.time && onGround)
                 {
+                    
                     Jump();
                 }
 
@@ -103,7 +104,13 @@ namespace Platformer.Mechanics
             
             rb.AddForce(Vector2.right * horizontal * moveSpeed);
             var velocityX = Mathf.Sign(rb.velocity.x);
-            if (Mathf.Abs(move.x) > 0) animator.Play("PlataRun");
+            if (Mathf.Abs(move.x) > 0) {
+                animator.Play("PlataRun");
+
+
+                    }
+           
+            
             if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
             {
                 Flip();
@@ -145,10 +152,12 @@ namespace Platformer.Mechanics
             }
             else
             {
+                animator.Play("PlataJump");
                 rb.gravityScale = gravity;
                 rb.drag = linearDrag * 0.15f;
                 if (rb.velocity.y < 0)
                 {
+                    
                     jump = false;
                     rb.gravityScale = gravity * fallMultiplier;
                 }
