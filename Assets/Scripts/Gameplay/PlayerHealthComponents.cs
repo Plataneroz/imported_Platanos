@@ -1,27 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Platformer.Core;
+using Platformer.Model;
 using UnityEngine;
 namespace Platformer.Mechanics
 {
     public class PlayerHealthComponents : Health
     {
+
+        public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        
         PlayerRestTime playerRest; 
         public LifeBar lifeBar;
         private void Start()
         {
-            playerRest = GetComponent<PlayerRestTime>();
-                maxHP = 3000;
-            currentHP = 3000;
+          //  playerRest = GetComponent<PlayerRestTime>();
+                maxHP = 100;
+            currentHP = 100;
 
         }
         public void Decrease()
         {
             Decrement();
-            lifeBar.DecreaseBar();
+            model.bananBar.RemoveLife();
         }
         public void Increase()
         {
-            if(!playerRest) Increase(); lifeBar.IncreaseBar();
+            if(!playerRest) Increase(); model.bananBar.AddLife();
 
         }
 
@@ -29,7 +34,8 @@ namespace Platformer.Mechanics
         {
             maxHP = 1;
             currentHP = 1;
-            lifeBar.IncreaseBar();
+            model.bananBar.AddLife();
+
         }
     }
 }

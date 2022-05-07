@@ -24,9 +24,13 @@ namespace Platformer.Model
 
         public Player player2;
 
+        public ChancletaDugeon chancletaDugeon;
 
+        public BananBar bananBar;
 
         public Menu menu;
+
+       
 
         /// <summary>
         /// The spawn point in the scene.

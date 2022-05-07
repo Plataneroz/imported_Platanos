@@ -46,6 +46,14 @@ namespace Platformer.Mechanics
         {
             if (phaseThree.activeSelf) phaseThree.SetActive(false);
         }
-
+        private void OnDestroy()
+        {
+            phaseOne.SetActive(false) ;
+            phaseTwo.SetActive(false);
+            phaseThree.SetActive(false);
+        }
     }
+
+    
+
     }

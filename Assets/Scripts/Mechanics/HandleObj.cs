@@ -1,4 +1,6 @@
 using System.Collections;
+using Platformer.Core;
+using Platformer.Model;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +21,19 @@ namespace Platformer.Mechanics
         bool triggerGrab;
         //public  SpriteRenderer sprite;
         public GameObject currentColliderGameObj;
-        //OnCollisionStay2d might be better for this 
+        public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+
+        //OnCollisionStay2d might be better for this
+        private void Start()
+        {
+  
+
+
+        }
+
+
+
+
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (!triggerGrab) return;
@@ -36,6 +50,8 @@ namespace Platformer.Mechanics
                     SavedColliders[numberOfPickedUP].gameObject.tag = "Player";
                 }
                 numberOfPickedUP++;
+                model.chancletaDugeon.AddToDungeon();
+                
                 print("cuatos huevos tienes " + numberOfPickedUP);
             }
         }
@@ -46,11 +62,12 @@ namespace Platformer.Mechanics
             if (numberOfPickedUP > 0)
             {
                 numberOfPickedUP--;
-                var objPos = transform.GetChild(0).position;
+                model.chancletaDugeon.RemoveFromDungeon();
+                var objPos = transform.position;
 
-                var colVelocity = transform.GetChild(0).transform.right * distance;
-                SavedColliders[numberOfPickedUP].gameObject.transform.position = new Vector3(objPos.x, objPos.y, 0);
-                SavedColliders[numberOfPickedUP].gameObject.transform.eulerAngles = transform.GetChild(0).transform.eulerAngles;
+                var colVelocity = transform.right * distance;
+                SavedColliders[numberOfPickedUP].gameObject.transform.position = new Vector3(objPos.x , objPos.y , 0);
+                SavedColliders[numberOfPickedUP].gameObject.transform.eulerAngles = transform.eulerAngles;
                 SavedColliders[numberOfPickedUP].gameObject.SetActive(true);
                 SavedColliders[numberOfPickedUP].collider.attachedRigidbody.AddForce(colVelocity, ForceMode2D.Impulse);
                 if (plyrControl != null)
@@ -67,6 +84,8 @@ namespace Platformer.Mechanics
                 print("cuatos huevos tienes " + numberOfPickedUP);
             }
         }
+
+
 
         public IEnumerator ResetPlayer(Vector2 velocity)
         {

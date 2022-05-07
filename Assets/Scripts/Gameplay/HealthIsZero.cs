@@ -16,13 +16,7 @@ namespace Platformer.Gameplay
        // public PlayerController playerController;
         public override void Execute()
         {
-            var plyr = health.GetComponent<Player>();
-            if (plyr != null)
-            {
-                plyr.bananaPeal.enabled = true;
-                 Schedule<PlayerDeath>();
-
-            }
+         
 
 
         }
