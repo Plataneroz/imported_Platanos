@@ -18,7 +18,7 @@ namespace Platformer.Mechanics
 
         // Use this for initialization
 
-        public void CantHurtPlayer()
+        public void HurtPlayer()
         {
             StartCoroutine(PlayerIsHurt());
         }

@@ -5,6 +5,7 @@ using static Platformer.Core.Simulation;
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using Platformer.Gameplay;
 //using static Platformer.Core.Simulation;
 namespace Platformer.Mechanics
 {
@@ -15,12 +16,21 @@ namespace Platformer.Mechanics
             public GameObject phaseOne;
             public GameObject phaseTwo;
             public GameObject phaseThree;
-           
-            // Start is called before the first frame update
+        public Animator animator;
+        // Start is called before the first frame update
 
         public void One()
         {
-            if(!phaseOne.activeSelf) phaseOne.SetActive(true);
+            if (phaseOne.name == "Spider")
+            {
+                phaseOne.transform.position = new Vector3(16.6f,3.83f,0);
+                phaseOne.transform.eulerAngles = new Vector3(0, 0, 55.113f);
+                animator.Play("spiderAttack");
+                phaseOne.GetComponent<CreateProjectile>().enabled = true;
+
+            }
+                
+                else { if (!phaseOne.activeSelf) phaseOne.SetActive(true); }
          }
         public void Two()
         {
@@ -48,9 +58,12 @@ namespace Platformer.Mechanics
         }
         private void OnDestroy()
         {
-            phaseOne.SetActive(false) ;
-            phaseTwo.SetActive(false);
-            phaseThree.SetActive(false);
+            if (gameObject.name == "FinalFormTrujillo")
+            {
+                phaseOne.SetActive(false);
+                phaseTwo.SetActive(false);
+                phaseThree.SetActive(false);
+            }
         }
     }
 

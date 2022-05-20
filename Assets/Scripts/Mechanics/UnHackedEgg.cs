@@ -31,12 +31,18 @@ namespace Platformer.Mechanics
 
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.color = Color.red;
+        }
+         void OnEnable()
+        {
+
 
         }
+
+
         void OnCollisionEnter2D(Collision2D collision)
         {
             //var player = collision.gameObject.GetComponent<PlayerController>();
-            if (collision.transform.tag == "Player" & harmFull)
+            if (collision.transform.tag == "Player" & harmFull & collision.collider.name !="aim")
             {
                 var player = collision.gameObject.GetComponent<Player>();
                 var healthComponents = collision.gameObject.GetComponent<PlayerHealthComponents>();
@@ -48,7 +54,7 @@ namespace Platformer.Mechanics
 
                     //   rb.AddForce(new Vector2(3, 3), ForceMode2D.Force);
                     healthComponents.Decrease();
-                    player.playerRestTime.CantHurtPlayer();
+                    player.playerRestTime.HurtPlayer();
                     
                     //player.Bounce(3);
                     if (!healthComponents.IsAlive)
@@ -66,28 +72,37 @@ namespace Platformer.Mechanics
             else if (gameObject.layer == 7)
             {
                 if (collision.collider.tag == "Ground")
-                { Destroy(gameObject, .01f); }
-
+                { gameObject.SetActive(false);  }
+                else if (collision.collider.tag == "Kart")
+                {
+                   
+                    var eggNBossColliding = Schedule<TrujilloKartCollision>();
+                    eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
+                    gameObject.SetActive(false);
+                }
 
                 else if (collision.collider.tag == "Boss")
                 {
                     var eggNBossColliding = Schedule<EggAndTrujilloCollision>();
                     eggNBossColliding.trujilloComponents = collision.gameObject.GetComponent<TrujilloComponets>();
-                    Destroy(gameObject, .01f);
+                    
+                    gameObject.SetActive(false);
                 }
 
                 else if (collision.collider.tag == "Minion")
                 {
                     var mionNBossColliding = Schedule<EggAndMionionCollision>();
                     mionNBossColliding.minionComponets = collision.gameObject.GetComponent<MinionComponets>();
-                    Destroy(gameObject, .01f);
+                   
+                    gameObject.SetActive(false);
                 }
 
                 else if (collision.collider.tag == "Kart")
                 {
                     var eggAndKartCollision = Schedule<EggAndKartCollision>();
                     eggAndKartCollision.kartComponents = collision.gameObject.GetComponent<KartComponents>();
-                    Destroy(gameObject, .01f);
+                    
+                    gameObject.SetActive(false);
                 }
 
             }
@@ -105,8 +120,6 @@ namespace Platformer.Mechanics
                 explode = !explode;
                 ChangeColor();
                 NotHarmfull();
-                
-                
                 StopAllCoroutines();
 
             }

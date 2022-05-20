@@ -37,7 +37,7 @@ namespace Platformer.Mechanics
 
         [Header("Physics")]
         public float maxSpeed = 7f;
-        public float linearDrag = 4f;
+        public float linearDrag = 0f;
         public float gravity = 1f;
         public float fallMultiplier = 5f;
 

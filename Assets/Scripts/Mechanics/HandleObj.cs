@@ -16,52 +16,55 @@ namespace Platformer.Mechanics
         int numberOfPickedUP = 0;
         int sizeOfBasket = 10;
         Collision2D[] SavedColliders = new Collision2D[10];
+        Collider[] SavedORColliders = new Collider[10];
         public CapsuleCollider2D playerCapsuleCollider;
         public Player plyrControl;
         bool triggerGrab;
         //public  SpriteRenderer sprite;
         public GameObject currentColliderGameObj;
         public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-
+        AudioController audioController;
         //OnCollisionStay2d might be better for this
         private void Start()
         {
-  
 
+            audioController = transform.parent.GetComponent<AudioController>();
 
         }
 
 
 
 
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (!triggerGrab) return;
-            else if (numberOfPickedUP < sizeOfBasket && collision.gameObject.tag == "unhackedEgg"
-                        || collision.gameObject.tag == "peal")
+            void OnCollisionEnter2D(Collision2D collision)
             {
-
-                collision.gameObject.SetActive(false);
-                SavedColliders[numberOfPickedUP] = collision;
-                if (SavedColliders[numberOfPickedUP].gameObject.tag == "peal")
+                if (!triggerGrab) return;
+                else if (numberOfPickedUP < sizeOfBasket && collision.gameObject.tag == "unhackedEgg"
+                            || collision.gameObject.tag == "peal")
                 {
-                    plyrControl = collision.collider.GetComponent<Player>();
-                    plyrControl.playerHealthComponents.ResetHP();
-                    SavedColliders[numberOfPickedUP].gameObject.tag = "Player";
-                }
-                numberOfPickedUP++;
-                model.chancletaDugeon.AddToDungeon();
-                
-                print("cuatos huevos tienes " + numberOfPickedUP);
-            }
-        }
+                audioController.SuckingSound();
+                collision.gameObject.SetActive(false);
+                    SavedColliders[numberOfPickedUP] = collision;
+                    if (SavedColliders[numberOfPickedUP].gameObject.tag == "peal")
+                    {
+                        plyrControl = collision.collider.GetComponent<Player>();
+                        plyrControl.playerHealthComponents.ResetHP();
+                        SavedColliders[numberOfPickedUP].gameObject.tag = "Player";
+                    }
+                    numberOfPickedUP++;
+                    model.chancletaDugeon.AddToDungeon();
 
+                    print("cuatos huevos tienes " + numberOfPickedUP);
+
+                }
+            }
+          
         public void Throwing(int distance)
         {
-            print("cuatos huevos tienes before throwing" + numberOfPickedUP);
+            //print("cuatos huevos tienes before throwing" + numberOfPickedUP);
             if (numberOfPickedUP > 0)
             {
-                numberOfPickedUP--;
+                audioController.BlowSound();
+                   numberOfPickedUP--;
                 model.chancletaDugeon.RemoveFromDungeon();
                 var objPos = transform.position;
 
@@ -83,8 +86,8 @@ namespace Platformer.Mechanics
                 }
                 print("cuatos huevos tienes " + numberOfPickedUP);
             }
+            else { audioController.EmptySound(); }
         }
-
 
 
         public IEnumerator ResetPlayer(Vector2 velocity)
@@ -102,6 +105,12 @@ namespace Platformer.Mechanics
         public void OnThrow(InputAction.CallbackContext context)
         {
             if (context.started) { Throwing(14); }
+
+
         }
+
+
+
+
     }
 }

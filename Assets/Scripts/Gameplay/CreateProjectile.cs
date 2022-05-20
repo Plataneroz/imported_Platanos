@@ -9,12 +9,13 @@ public class CreateProjectile : MonoBehaviour
     public float Timer = 3;
     public float yOffset;
     bool triggerAction = true;
+    public bool mainObject;
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
-            StartCoroutine(WaitForActions(Timer, yOffset));
+           if (triggerAction) StartCoroutine(WaitForActions(Timer, yOffset));
     }
 
     public IEnumerator WaitForActions(float waitTime, float offset)
@@ -28,7 +29,7 @@ public class CreateProjectile : MonoBehaviour
 
             }
         }
-    public void Launch(float offset)
+        public void Launch(float offset)
         {
             projectile.transform.position = new Vector3(transform.position.x, transform.position.y + offset);
             Instantiate(projectile);

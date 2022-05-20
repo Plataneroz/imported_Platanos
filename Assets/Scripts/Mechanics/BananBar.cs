@@ -7,7 +7,7 @@ public class BananBar : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Text txt;
-    private float _numberOfObjs =100;
+    private float _numberOfObjs =30 ;
     public float numberOfObjs => _numberOfObjs;
 
     // Start is called before the first frame update

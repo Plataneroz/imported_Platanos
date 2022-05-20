@@ -15,6 +15,7 @@ TagManager:
   - Minion
   - Kart
   - peal
+  - chancla
   layers:
   - Default
   - TransparentFX

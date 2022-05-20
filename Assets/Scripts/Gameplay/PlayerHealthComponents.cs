@@ -9,20 +9,29 @@ namespace Platformer.Mechanics
     {
 
         public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-        
+        AudioController audioController;
+        public SpriteEffects spriteEffects;
         PlayerRestTime playerRest; 
         public LifeBar lifeBar;
         private void Start()
         {
-          //  playerRest = GetComponent<PlayerRestTime>();
-                maxHP = 100;
-            currentHP = 100;
+            
+            spriteEffects = GetComponent<SpriteEffects>();
+            playerRest = GetComponent<PlayerRestTime>();
+                maxHP = 30;
+            currentHP = 30;
 
         }
         public void Decrease()
         {
-            Decrement();
-            model.bananBar.RemoveLife();
+            if (playerRest.canHarmPlayer)
+            {
+                playerRest.HurtPlayer();
+                Decrement();
+                model.bananBar.RemoveLife();
+                spriteEffects.StartMultiBlink();
+            }
+           
         }
         public void Increase()
         {

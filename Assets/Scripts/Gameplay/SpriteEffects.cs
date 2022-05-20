@@ -8,14 +8,15 @@ namespace Platformer.Mechanics
     public class SpriteEffects : MonoBehaviour
     {  
          public SpriteRenderer spriteRenderer;
-        
+        SpriteRenderer[] sprites;
         Sprite[] spriteArray;
         
         int currentSprite;
         Color defaultColor;
         private void Start()
         {
-           // spriteRenderer = transform.root.GetComponent<SpriteRenderer>();
+            // spriteRenderer = transform.root.GetComponent<SpriteRenderer>();
+            sprites = GetComponentsInChildren<SpriteRenderer>();
 
             defaultColor = spriteRenderer.color;
         }
@@ -30,6 +31,10 @@ namespace Platformer.Mechanics
             StartCoroutine(Blink());
         }
 
+        public void StartMultiBlink()
+        {
+            StartCoroutine(BlinkMultiSprites());
+        }
         public IEnumerator Blink()
         {
            
@@ -44,7 +49,20 @@ namespace Platformer.Mechanics
         {
             spriteRenderer.sprite = spriteArray[1];
         }
+         IEnumerator BlinkMultiSprites()
+        {
+            
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                sprites[i].color =  Color.red;
+            }
+            yield return new WaitForSeconds(0.4f);
 
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                sprites[i].color = Color.white;
+            }
+        }
 
     }
 }
